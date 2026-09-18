@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexiPay AI — Voice-Native Rural Financial & Scheme Layer</title>
+    <meta name="description" content="FlexiPay AI is a voice-native digital banking & scheme assistant for rural India compliant with RBI 2026 2FA guidelines, DPDP Rules 2025, and integrated with Banking BHASHINI & Kisan Credit Card pipelines.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- DPDP Act 2025 Consent Modal -->
+    <div id="consent-modal" class="modal-backdrop active">
+        <div class="modal-card consent-card">
+            <div class="modal-badge"><span class="icon">📜</span> <span data-i18n="consent_badge">DPDP Act 2025 Compliance</span></div>
+            <h2 data-i18n="consent_title">Mandatory Data & Voice Privacy Consent</h2>
+            <p class="modal-subtitle" data-i18n="consent_subtitle">Digital Personal Data Protection Act (DPDP Rules 2025)</p>
+            
+            <div class="consent-body">
+                <div class="consent-audio-play" id="btn-play-consent-audio">
+                    <button class="btn-icon-audio"><span class="icon">🔊</span> <span data-i18n="consent_audio_btn">Listen to Consent in Selected Language</span></button>
+                </div>
+                <div class="consent-box">
+                    <p data-i18n="consent_desc"><strong>FlexiPay AI</strong> requires your explicit, informed consent to capture:</p>
+                    <ul>
+                        <li data-i18n="consent_li1">🎙️ <strong>Voice audio clips</strong> for Banking BHASHINI speech recognition.</li>
+                        <li data-i18n="consent_li2">💰 <strong>Transaction intent & UPI details</strong> to generate pre-filled payment previews.</li>
+                        <li data-i18n="consent_li3">🌾 <strong>Land & occupation details</strong> for Kisan Credit Card (KCC) & myScheme.gov.in matching.</li>
+                    </ul>
+                    <p class="notice" data-i18n="consent_notice"><em>Notice: Your financial transactions require mandatory 2-Factor UPI PIN verification under RBI 2026 guidelines. Voice alone is never used to move funds.</em></p>
+                </div>
+            </div>
+
+            <div class="consent-actions">
+                <button id="btn-consent-accept" class="btn btn-emerald btn-glow">
+                    <span class="icon">✓</span> <span data-i18n="consent_accept">Accept & Continue</span>
+                </button>
+                <button id="btn-consent-decline" class="btn btn-outline">
+                    <span data-i18n="consent_decline">View Terms Only</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mandatory RBI 2026 2FA PIN Modal -->
+    <div id="pin-modal" class="modal-backdrop hidden">
+        <div class="modal-card pin-card">
+            <div class="modal-badge badge-warning"><span class="icon">🛡️</span> RBI 2026 Mandatory 2FA Gate</div>
+            <h2>Enter 4-Digit UPI PIN</h2>
+            <p class="modal-subtitle">Voice confirms intent. PIN authorizes money movement.</p>
+            
+            <div class="tx-summary-strip" id="pin-tx-summary">
+                <div>Transferring <strong>₹500</strong> to <strong>Ramesh (Seeds Purchase)</strong></div>
+                <div class="tx-rail">Rail: NPCI UPI 123Pay Sandbox</div>
+            </div>
+
+            <div class="pin-display">
+                <span class="pin-dot" id="dot-1"></span>
+                <span class="pin-dot" id="dot-2"></span>
+                <span class="pin-dot" id="dot-3"></span>
+                <span class="pin-dot" id="dot-4"></span>
+            </div>
+
+            <div class="pin-keypad">
+                <button class="pin-btn" data-val="1">1</button>
+                <button class="pin-btn" data-val="2">2</button>
+                <button class="pin-btn" data-val="3">3</button>
+                <button class="pin-btn" data-val="4">4</button>
+                <button class="pin-btn" data-val="5">5</button>
+                <button class="pin-btn" data-val="6">6</button>
+                <button class="pin-btn" data-val="7">7</button>
+                <button class="pin-btn" data-val="8">8</button>
+                <button class="pin-btn" data-val="9">9</button>
+                <button class="pin-btn pin-action" id="pin-clear">C</button>
+                <button class="pin-btn" data-val="0">0</button>
+                <button class="pin-btn pin-action pin-submit" id="pin-submit">✓</button>
+            </div>
+            
+            <button id="btn-close-pin-modal" class="btn-text">Cancel Transaction</button>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand">
+                <div class="logo-icon">🌾</div>
+                <div class="brand-text">
+                    <h1>FlexiPay AI <span class="badge-tag">फ्लेक्सीपे AI</span></h1>
+                    <p>Voice-Native Rural Financial & Scheme Layer</p>
+                </div>
+            </div>
+
+            <div class="header-status">
+                <div class="status-pill green">
+                    <span class="dot-pulse"></span>
+                    <span id="consent-status-text">DPDP 2025 Consent Logged</span>
+                </div>
+                <div class="status-pill blue">
+                    <span class="icon">🏛️</span>
+                    <span>Banking BHASHINI Active</span>
+                </div>
+                <div class="status-pill gold">
+                    <span class="icon">🛡️</span>
+                    <span>RBI 2026 2FA PIN Gate</span>
+                </div>
+            </div>
+
+            <div class="header-controls">
+                <div class="lang-selector-wrapper">
+                    <span class="icon">🌐</span>
+                    <select id="select-language" class="lang-select">
+                        <option value="en-IN" selected>English (India)</option>
+                        <option value="hi-IN">Hindi (हिंदी - अवधी/भोजपुरी)</option>
+                        <option value="ta-IN">Tamil (தமிழ்)</option>
+                        <option value="te-IN">Telugu (తెలుగు)</option>
+                        <option value="bn-IN">Bengali (বাংলা)</option>
+                        <option value="mr-IN">Marathi (मराठी)</option>
+                        <option value="pa-IN">Punjabi (ਪੰਜਾਬੀ)</option>
+                        <option value="kn-IN">Kannada (ಕನ್ನಡ)</option>
+                    </select>
+                </div>
+                <button id="btn-toggle-theme" class="btn-icon" title="Toggle Theme">🌙</button>
+            </div>
+        </div>
+
+        <!-- Channel Selector Tabs -->
+        <div class="channel-bar">
+            <button class="channel-tab active" data-channel="smartphone">
+                <span class="icon">📱</span> Smartphone Mode (Mic-Native UI)
+            </button>
+            <button class="channel-tab" data-channel="ivr">
+                <span class="icon">📞</span> Feature Phone IVR (UPI 123Pay)
+            </button>
+            <button class="channel-tab" data-channel="bankmitra">
+                <span class="icon">👨‍💼</span> Bank Mitra / CSC Operator Console
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="app-main">
+        <!-- CHANNEL 1: SMARTPHONE MIC-NATIVE UI -->
+        <section id="channel-smartphone" class="channel-view active">
+            <div class="grid-layout">
+                <!-- Left Panel: Voice Assistant & Speech Input -->
+                <div class="card voice-card">
+                    <div class="card-header">
+                        <h2><span class="icon">🎙️</span> Multilingual Voice Assistant</h2>
+                        <span class="badge">Bhashini API Primary</span>
+                    </div>
+
+                    <!-- Canvas Audio Visualizer -->
+                    <div class="visualizer-container">
+                        <canvas id="waveform-canvas" width="600" height="120"></canvas>
+                        <div class="visualizer-status" id="speech-status-text">Tap microphone or scenario card to speak</div>
+                    </div>
+
+                    <!-- Mic Action Area -->
+                    <div class="mic-action-area">
+                        <button id="btn-mic-main" class="btn-mic">
+                            <div class="mic-inner">
+                                <span class="mic-icon">🎤</span>
+                            </div>
+                            <div class="mic-rings"></div>
+                        </button>
+                        <p class="mic-hint">Press to start listening in <span id="current-lang-name">Hindi (हिंदी)</span></p>
+                    </div>
+
+                    <!-- Live Transcription & NLU Intent Parser Output -->
+                    <div class="nlu-output-box">
+                        <div class="nlu-header">
+                            <span class="title">Speech-to-Text & Banking BHASHINI NLU</span>
+                            <span class="badge badge-outline" id="nlu-confidence">Confidence: 98%</span>
+                        </div>
+                        <div class="transcript-display" id="live-transcript">
+                            "रमेश को बीज खरीदने के लिए 500 रुपये भेजो"
+                        </div>
+
+                        <!-- Parsed Intent Chips -->
+                        <div class="intent-chips-grid">
+                            <div class="intent-chip">
+                                <span class="label">Parsed Intent</span>
+                                <span class="val" id="intent-type">P2P_TRANSFER</span>
+                            </div>
+                            <div class="intent-chip">
+                                <span class="label">Recipient</span>
+                                <span class="val" id="intent-recipient">Ramesh (Vendor)</span>
+                            </div>
+                            <div class="intent-chip">
+                                <span class="label">Amount</span>
+                                <span class="val" id="intent-amount">₹500.00</span>
+                            </div>
+                            <div class="intent-chip">
+                                <span class="label">Fallback Status</span>
+                                <span class="val" id="intent-fallback">Primary: BHASHINI Model</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Voice Scenarios / Demo Prompts -->
+                    <div class="scenarios-section">
+                        <h3><span class="icon">⚡</span> Try Preset Rural Scenarios</h3>
+                        <div class="scenarios-grid">
+                            <button class="scenario-btn" data-scenario="transfer">
+                                <span class="s-icon">🌾</span>
+                                <div class="s-text">
+                                    <strong>Send ₹500 to Ramesh</strong>
+                                    <small>Payment Intent + Mandatory 2FA PIN</small>
+                                </div>
+                            </button>
+                            <button class="scenario-btn danger-border" data-scenario="vishing">
+                                <span class="s-icon">🚨</span>
+                                <div class="s-text">
+                                    <strong>Scam Alert (Vishing)</strong>
+                                    <small>Fake Bank Officer asking for OTP</small>
+                                </div>
+                            </button>
+                            <button class="scenario-btn" data-scenario="kcc">
+                                <span class="s-icon">🚜</span>
+                                <div class="s-text">
+                                    <strong>Kisan Credit Card (KCC)</strong>
+                                    <small>₹2L Collateral-Free & 4% Rate Helper</small>
+                                </div>
+                            </button>
+                            <button class="scenario-btn" data-scenario="scheme">
+                                <span class="s-icon">📜</span>
+                                <div class="s-text">
+                                    <strong>PM-KISAN Status</strong>
+                                    <small>myScheme.gov.in 16th Installment</small>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Dynamic Operations & Fraud Guardian -->
+                <div class="right-stack">
+                    <!-- Action Preview Box -->
+                    <div class="card action-preview-card" id="action-preview-box">
+                        <div class="card-header">
+                            <h2><span class="icon">📋</span> Visual + Audio Form Preview</h2>
+                            <span class="badge green-bg">Awaiting PIN</span>
+                        </div>
+                        <div class="preview-content" id="preview-content-body">
+                            <div class="preview-hero">
+                                <div class="amount-large">₹500</div>
+                                <div class="to-label">To Ramesh (Wheat Seed Vendor)</div>
+                            </div>
+                            <div class="preview-details">
+                                <div class="p-row">
+                                    <span>Source Account:</span>
+                                    <strong>SBI Gramin A/C ****4821</strong>
+                                </div>
+                                <div class="p-row">
+                                    <span>Authentication:</span>
+                                    <span class="highlight-pin">Mandatory 2FA (UPI PIN Required)</span>
+                                </div>
+                                <div class="p-row">
+                                    <span>Regulatory Standard:</span>
+                                    <strong>RBI Directions 2025/2026</strong>
+                                </div>
+                            </div>
+                            <button id="btn-trigger-pin-gate" class="btn btn-emerald btn-block btn-lg">
+                                <span class="icon">🔑</span> Proceed to Enter UPI PIN
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Two-Sided Fraud Guardian Dashboard -->
+                    <div class="card fraud-card" id="fraud-card">
+                        <div class="card-header">
+                            <h2><span class="icon">🛡️</span> Fraud Guardian (Two-Sided Defense)</h2>
+                            <span class="badge badge-warning" id="fraud-guardian-status">Active Monitoring</span>
+                        </div>
+
+                        <!-- Inbound Scam Alert Panel -->
+                        <div class="scam-detector-panel" id="scam-alert-box">
+                            <div class="scam-alert-header green">
+                                <span class="alert-icon">✅</span>
+                                <div>
+                                    <strong id="scam-title">Inbound Voice Stream Secure</strong>
+                                    <p id="scam-desc">No vishing patterns or OTP extraction prompts detected in incoming audio.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Outbound Anti-Replay Challenge -->
+                        <div class="outbound-challenge-box">
+                            <div class="oc-title">
+                                <strong>Outbound Dynamic Anti-Replay Challenge</strong>
+                                <small>Protects against deepfake voice cloning</small>
+                            </div>
+                            <div class="oc-passphrase-area">
+                                <span>Challenge Phrase:</span>
+                                <strong id="dynamic-passphrase" class="phrase-text">"Bharat 8492"</strong>
+                                <button id="btn-gen-passphrase" class="btn-sm btn-outline">Refresh</button>
+                            </div>
+                        </div>
+
+                        <!-- Simulated Vishing Attack Launcher -->
+                        <div class="vishing-test-strip">
+                            <span>Simulate Threat:</span>
+                            <button id="btn-test-vishing" class="btn-sm btn-danger">
+                                🚨 Trigger Fake "Bank Manager" Vishing Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHANNEL 2: FEATURE PHONE IVR (UPI 123Pay) -->
+        <section id="channel-ivr" class="channel-view hidden">
+            <div class="ivr-workspace">
+                <!-- Nokia-Style Feature Phone Frame -->
+                <div class="phone-frame">
+                    <div class="phone-earpiece"></div>
+                    <div class="phone-brand">GraminPAY Feature Phone</div>
+                    
+                    <!-- Phone Screen -->
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <span>📶 4G VOLTE</span>
+                            <span>UPI 123Pay</span>
+                            <span>🔋 94%</span>
+                        </div>
+                        <div class="screen-body" id="ivr-screen-content">
+                            <div class="call-status">CONNECTED: 08045163581</div>
+                            <div class="ivr-prompt-display">
+                                "Welcome to Banking BHASHINI IVR. Press 1 for Money Transfer, 2 for Balance Check, 3 for KCC Loan Status."
+                            </div>
+                            <div class="ivr-digit-entered" id="ivr-entered-digits">DTMF: -</div>
+                        </div>
+                    </div>
+
+                    <!-- Keypad -->
+                    <div class="phone-keypad">
+                        <div class="nav-keys">
+                            <button class="phone-btn key-call" id="ivr-btn-call">📞 CALL</button>
+                            <button class="phone-btn key-end" id="ivr-btn-end">❌ END</button>
+                        </div>
+                        <div class="digit-keys">
+                            <button class="phone-btn key-digit" data-digit="1">1 <span>. , !</span></button>
+                            <button class="phone-btn key-digit" data-digit="2">2 <span>ABC</span></button>
+                            <button class="phone-btn key-digit" data-digit="3">3 <span>DEF</span></button>
+                            <button class="phone-btn key-digit" data-digit="4">4 <span>GHI</span></button>
+                            <button class="phone-btn key-digit" data-digit="5">5 <span>JKL</span></button>
+                            <button class="phone-btn key-digit" data-digit="6">6 <span>MNO</span></button>
+                            <button class="phone-btn key-digit" data-digit="7">7 <span>PQRS</span></button>
+                            <button class="phone-btn key-digit" data-digit="8">8 <span>TUV</span></button>
+                            <button class="phone-btn key-digit" data-digit="9">9 <span>WXYZ</span></button>
+                            <button class="phone-btn key-digit" data-digit="*">* <span>+</span></button>
+                            <button class="phone-btn key-digit" data-digit="0">0 <span>_</span></button>
+                            <button class="phone-btn key-digit" data-digit="#"># <span>⌂</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IVR Info & Guidance Sidebar -->
+                <div class="ivr-info-card card">
+                    <div class="card-header">
+                        <h2><span class="icon">☎️</span> Reaching 400M Feature Phone Users</h2>
+                        <span class="badge gold-bg">UPI 123Pay Rails</span>
+                    </div>
+                    <p>Over 400 million citizens in rural India use feature phones without touchscreen apps. GraminPay AI operates over IVR & Missed Call Gateways using the exact same Banking BHASHINI multilingual voice engine.</p>
+                    
+                    <div class="ivr-steps-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <strong>Dial IVR Number (08045163581)</strong>
+                                <p>Spoken greetings in Hindi, Bhojpuri, Tamil, Telugu, etc.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <strong>Speak Intent or Press DTMF Key</strong>
+                                <p>Natural speech recognition converts voice to structured transaction.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <strong>Mandatory UPI PIN Entry on Keypad</strong>
+                                <p>Encrypted IVR DTMF transmission complies with RBI 2FA mandate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHANNEL 3: BANK MITRA / CSC OPERATOR CONSOLE -->
+        <section id="channel-bankmitra" class="channel-view hidden">
+            <div class="grid-layout">
+                <!-- Left: Agent Intake Portal -->
+                <div class="card bankmitra-card">
+                    <div class="card-header">
+                        <h2><span class="icon">👨‍💼</span> Bank Mitra / CSC Assisted Console</h2>
+                        <span class="badge blue-bg">Human-in-the-Loop</span>
+                    </div>
+                    <p>Designed for Bank Mitras assisting first-time digital users, elderly citizens, or illiterate villagers who require human-assisted onboarding.</p>
+
+                    <div class="form-group-grid">
+                        <div class="form-group">
+                            <label>Villager / Customer Name</label>
+                            <input type="text" id="bm-cust-name" value="Sita Devi (Village Kherli)" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number / Aadhaar Ref</label>
+                            <input type="text" id="bm-cust-mobile" value="+91 98765 43210" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Assisted Service Type</label>
+                            <select id="bm-service-type" class="form-input">
+                                <option value="kcc">Kisan Credit Card (Jan Samarth Auto-Fill)</option>
+                                <option value="aeps">AePS Cash Withdrawal Slip</option>
+                                <option value="ekyc">Video-KYC Slot Booking</option>
+                                <option value="complaint">Cyber Fraud Complaint (1930 Helpline)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Voice Intake Pre-fill Assistant -->
+                    <div class="voice-intake-box">
+                        <button id="btn-bm-voice-intake" class="btn btn-outline btn-block">
+                            <span class="icon">🎙️</span> Voice Intake from Villager (Auto-Fill Fields)
+                        </button>
+                    </div>
+
+                    <div class="action-buttons-row">
+                        <button id="btn-bm-generate-slip" class="btn btn-emerald">
+                            <span class="icon">📝</span> Generate Pre-filled Digital Slip
+                        </button>
+                        <button id="btn-bm-book-kyc" class="btn btn-outline">
+                            <span class="icon">📹</span> Schedule RBI Video-KYC
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Slip Preview & AePS Security Warning -->
+                <div class="right-stack">
+                    <div class="card slip-preview-card">
+                        <div class="card-header">
+                            <h2><span class="icon">📄</span> Digital Slip & Application Tracker</h2>
+                            <span class="badge green-bg">Ready to Sign</span>
+                        </div>
+
+                        <div class="slip-body" id="bm-slip-display">
+                            <div class="slip-stamp">GRAMINPAY ASSISTED</div>
+                            <h3>Jan Samarth KCC Application Slip</h3>
+                            <hr>
+                            <div class="p-row"><span>Applicant:</span> <strong>Sita Devi</strong></div>
+                            <div class="p-row"><span>Category:</span> <strong>Tenant Farmer (Self-Declaration JLG)</strong></div>
+                            <div class="p-row"><span>Requested Credit:</span> <strong>₹1,60,000 (Collateral-Free)</strong></div>
+                            <div class="p-row"><span>Interest Subvention:</span> <strong>4% Effective Rate (Jan Samarth)</strong></div>
+                            <div class="p-row"><span>Status:</span> <span class="text-emerald">Pre-Verified & Synced with Kisan Rin</span></div>
+                        </div>
+                    </div>
+
+                    <!-- AePS Security Warning Banner -->
+                    <div class="card aeps-warning-card">
+                        <div class="card-header">
+                            <h2><span class="icon">⚠️</span> AePS Biometric Fraud Advisory</h2>
+                        </div>
+                        <p>Aadhaar-enabled Payment System (AePS) lacks 2FA. Fraudsters exploit cloned silicon fingerprints at unauthorized BC points.</p>
+                        <div class="aeps-safety-tips">
+                            <span>✔️ Always verify Bank Mitra CSC ID badge.</span>
+                            <span>✔️ Use 2FA OTP verification for cash transactions > ₹10,000.</span>
+                            <span>✔️ Lock Aadhaar biometrics on mAadhaar app when not in use.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KISAN CREDIT CARD (KCC) & SCHEME MATCHER HUB (ALWAYS ACCESSIBLE BELOW) -->
+        <section class="kcc-hub-section card">
+            <div class="card-header">
+                <h2><span class="icon">🌾</span> Kisan Credit Card (KCC) & Scheme Matcher Hub</h2>
+                <span class="badge gold-bg">myScheme.gov.in & Kisan Rin Portal</span>
+            </div>
+
+            <div class="kcc-grid">
+                <!-- Calculator & Savings Gauge -->
+                <div class="kcc-box">
+                    <h3>Collateral-Free KCC Credit & Interest Subvention Calculator</h3>
+                    <p>Union Budget 2025-26 raised collateral-free limit to <strong>₹2 Lakh</strong> and subvention ceiling to <strong>₹5 Lakh</strong>.</p>
+                    
+                    <div class="calc-row">
+                        <label>Loan Amount Needed (₹):</label>
+                        <input type="range" id="kcc-range-amount" min="20000" max="500000" step="10000" value="160000">
+                        <span id="kcc-val-amount" class="range-val">₹1,60,000</span>
+                    </div>
+
+                    <div class="rate-comparison-card">
+                        <div class="rate-box highlight-green">
+                            <span class="r-title">On-Time Repayment Rate</span>
+                            <span class="r-rate">4.0%</span>
+                            <small>With 3% Prompt Repayment Subvention</small>
+                        </div>
+                        <div class="rate-box highlight-red">
+                            <span class="r-title">Late / Clawback Rate</span>
+                            <span class="r-rate">9.0%</span>
+                            <small>Loss of subvention on default</small>
+                        </div>
+                    </div>
+
+                    <div class="savings-banner">
+                        🌱 Yearly Interest Savings with GraminPay On-Time Voice Reminder: <strong id="kcc-savings-amt">₹8,000 / year</strong>
+                    </div>
+
+                    <div class="reminder-schedule-row">
+                        <button id="btn-schedule-kcc-reminder" class="btn btn-emerald btn-sm">
+                            <span class="icon">⏰</span> Schedule Automated Voice Reminder Before Due Date
+                        </button>
+                    </div>
+                </div>
+
+                <!-- myScheme.gov.in Matcher Results -->
+                <div class="kcc-box">
+                    <h3>Eligible Schemes for Farmer Profile</h3>
+                    <div class="scheme-list">
+                        <div class="scheme-card">
+                            <div class="sc-header">
+                                <strong>Kisan Credit Card (KCC)</strong>
+                                <span class="badge green-bg">98% Match</span>
+                            </div>
+                            <p>Collateral-free credit for crops & livestock via Kisan Rin Portal.</p>
+                            <button class="btn-sm btn-outline btn-autofill-kcc">Auto-Fill Jan Samarth Application</button>
+                        </div>
+
+                        <div class="scheme-card">
+                            <div class="sc-header">
+                                <strong>PM-KISAN Samman Nidhi</strong>
+                                <span class="badge green-bg">Active Beneficiary</span>
+                            </div>
+                            <p>₹6,000/year direct benefit transfer. 16th Installment processed.</p>
+                            <span class="text-muted">Aadhaar Seeded & e-KYC Complete</span>
+                        </div>
+
+                        <div class="scheme-card">
+                            <div class="sc-header">
+                                <strong>Pradhan Mantri Fasal Bima Yojana (PMFBY)</strong>
+                                <span class="badge gold-bg">Recommended</span>
+                            </div>
+                            <p>Comprehensive crop insurance against drought and unseasonal rain.</p>
+                            <button class="btn-sm btn-outline">Calculate Premium</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live System Logs & Audit Console -->
+        <section class="card log-card">
+            <div class="card-header">
+                <h2><span class="icon">💻</span> Live Regulatory Compliance & NLU Audit Console</h2>
+                <button id="btn-clear-logs" class="btn-sm btn-outline">Clear Logs</button>
+            </div>
+            <div class="log-terminal" id="system-log-terminal">
+                <div class="log-line info">[SYSTEM INIT] FlexiPay AI Engine initialized. DPDP 2025 Audit Module active.</div>
+                <div class="log-line info">[REGULATORY] RBI 2025/2026 Dynamic 2FA Enforcement Mode: ENABLED.</div>
+                <div class="log-line info">[BHASHINI] Banking BHASHINI API endpoint connected. 22 Scheduled Indian Languages ready.</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>FlexiPay AI — Grounded Voice-Native Rural Digital Banking & Scheme Assistant</p>
+            <p class="footer-sub">Designed for RBI 2025/2026 Directions, DPDP Rules 2025, Banking BHASHINI & NPCI UPI 123Pay Rails.</p>
+        </div>
+    </footer>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
