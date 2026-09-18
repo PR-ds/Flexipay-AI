@@ -100,8 +100,8 @@
                     <span id="consent-status-text" data-i18n="status_consent">DPDP 2025 Consent Logged</span>
                 </div>
                 <div class="status-pill blue">
-                    <span class="icon">🏛️</span>
-                    <span data-i18n="status_bhashini">Banking BHASHINI Active</span>
+                    <span class="icon">🔊</span>
+                    <span data-i18n="status_gtts">gTTS Multilingual Voice Active</span>
                 </div>
                 <div class="status-pill gold">
                     <span class="icon">🛡️</span>
@@ -264,39 +264,14 @@
                     </div>
                 </div>
 
-                <!-- Quick Preset Scenarios Strip -->
-                <div class="scenarios-section">
-                    <h3><span class="icon">⚡</span> <span data-i18n="heading_scenarios">Try Preset Rural Scenarios</span></h3>
-                    <div class="scenarios-grid">
-                        <button class="scenario-btn" data-scenario="transfer">
-                            <span class="s-icon">🌾</span>
-                            <div class="s-text">
-                                <strong data-i18n="sc_transfer_title">Send ₹500 to Ramesh</strong>
-                                <small data-i18n="sc_transfer_desc">Payment Intent + Mandatory 2FA PIN</small>
-                            </div>
-                        </button>
-                        <button class="scenario-btn danger-border" data-scenario="vishing">
-                            <span class="s-icon">🚨</span>
-                            <div class="s-text">
-                                <strong data-i18n="sc_vishing_title">Scam Alert (Vishing)</strong>
-                                <small data-i18n="sc_vishing_desc">Fake Bank Officer asking for OTP</small>
-                            </div>
-                        </button>
-                        <button class="scenario-btn" data-scenario="kcc">
-                            <span class="s-icon">🚜</span>
-                            <div class="s-text">
-                                <strong data-i18n="sc_kcc_title">Kisan Credit Card (KCC)</strong>
-                                <small data-i18n="sc_kcc_desc">₹2L Collateral-Free & 4% Rate Helper</small>
-                            </div>
-                        </button>
-                        <button class="scenario-btn" data-scenario="scheme">
-                            <span class="s-icon">📜</span>
-                            <div class="s-text">
-                                <strong data-i18n="sc_scheme_title">PM-KISAN Status</strong>
-                                <small data-i18n="sc_scheme_desc">myScheme.gov.in 16th Installment</small>
-                            </div>
-                        </button>
-                    </div>
+                <!-- Clean gTTS Voice Action Bar -->
+                <div class="voice-assistant-toolbar">
+                    <button id="btn-test-gtts-voice" class="btn btn-outline btn-sm">
+                        <span class="icon">🔊</span> <span data-i18n="btn_test_voice">Listen to Voice Assistant (gTTS)</span>
+                    </button>
+                    <span class="voice-model-badge">
+                        <span class="icon">⚡</span> <span data-i18n="lbl_gtts_engine">Engine: Google Text-to-Speech (gTTS) Multilingual</span>
+                    </span>
                 </div>
             </div>
         </section>

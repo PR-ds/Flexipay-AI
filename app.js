@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Voice Section
         btnMicMain: document.getElementById('btn-mic-main'),
+        btnTestGttsVoice: document.getElementById('btn-test-gtts-voice'),
         speechStatusText: document.getElementById('speech-status-text'),
         currentLangName: document.getElementById('current-lang-name'),
         liveTranscript: document.getElementById('live-transcript'),
@@ -118,6 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — Voice-Native Rural Financial & Scheme Layer',
             brand_tag: 'फ्लेक्सीपे AI',
             brand_subtitle: 'Voice-Native Rural Financial & Scheme Layer',
+            status_gtts: 'gTTS Multilingual Voice Active',
+            btn_test_voice: 'Listen to Voice Assistant (gTTS)',
+            lbl_gtts_engine: 'Engine: Google Text-to-Speech (gTTS) Multilingual',
+            welcome_voice_msg: 'Welcome to FlexiPay AI. I am your voice banking assistant. How can I help you today?',
             status_consent: 'DPDP 2025 Consent Logged',
             status_bhashini: 'Banking BHASHINI Active',
             status_rbi: 'RBI 2026 2FA PIN Gate',
@@ -240,6 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'फ्लेक्सीपे AI — वॉयस-नेविगेटेड ग्रामीण वित्तीय व योजना सहायक',
             brand_tag: 'फ्लेक्सीपे AI',
             brand_subtitle: 'ग्रामीण भारत के लिए वॉयस-आधारित वित्तीय व सरकारी योजना प्लेटफ़ॉर्म',
+            status_gtts: 'gTTS बहुभाषी वॉयस सक्रिय',
+            btn_test_voice: 'वॉयस असिस्टेंट सुनें (gTTS)',
+            lbl_gtts_engine: 'इंजन: गूगल टेक्स्ट-टू-स्पीच (gTTS) बहुभाषी',
+            welcome_voice_msg: 'फ्लेक्सीपे AI में आपका स्वागत है। मैं आपका वॉयस बैंकिंग सहायक हूँ। आज मैं आपकी क्या मदद कर सकता हूँ?',
             status_consent: 'DPDP 2025 सहमति दर्ज',
             status_bhashini: 'बैंकिंग भाषिणी सक्रिय',
             status_rbi: 'RBI 2026 2FA PIN गेट',
@@ -362,6 +371,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'फ्लेक्सीपे AI — ग्रामीण डिजिटल बँकिंग व योजना सहाय्यक',
             brand_tag: 'फ्लेक्सीपे AI',
             brand_subtitle: 'ग्रामीण भारतासाठी व्हॉईस-आधारित डिजिटल बँकिंग व योजना व्यासपीठ',
+            status_gtts: 'gTTS बहुभाषिक व्हॉईस सक्रिय',
+            btn_test_voice: 'व्हॉईस असिस्टंट ऐका (gTTS)',
+            lbl_gtts_engine: 'इंजिन: गुगल टेक्स्ट-टू-स्पीच (gTTS) बहुभाषिक',
+            welcome_voice_msg: 'फ्लेक्सीपे AI मध्ये आपले स्वागत आहे. मी तुमचा व्हॉईस बँकिंग सहाय्यक आहे. मी आज तुम्हाला कशी मदत करू शकतो?',
             status_consent: 'DPDP 2025 संमती नोंदवली',
             status_bhashini: 'बँकिंग भाषिणी सक्रिय',
             status_rbi: 'RBI 2026 2FA PIN गेट',
@@ -484,6 +497,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — கிராமப்புற குரல் வழி வங்கி மற்றும் திட்ட உதவியாளர்',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'கிராமப்புற இந்தியாவிற்கான குரல் வழி டிஜிட்டல் வங்கி தளம்',
+            status_gtts: 'gTTS பன்மொழி குரல் செயலில் உள்ளது',
+            btn_test_voice: 'குரல் உதவியாளரைக் கேளுங்கள் (gTTS)',
+            lbl_gtts_engine: 'இயந்திரம்: கூகுள் டெக்ஸ்ட்-டு-ஸ்பீச் (gTTS) பன்மொழி',
+            welcome_voice_msg: 'பிளெக்சிபே AI-க்கு உங்களை வரவேற்கிறோம். நான் உங்கள் குரல் வங்கி உதவியாளர். இன்று நான் உங்களுக்கு எப்படி உதவ முடியும்?',
             status_consent: 'DPDP 2025 ஒப்புதல் பதிவு',
             status_bhashini: 'வங்கி பாஷினி செயலில்',
             status_rbi: 'RBI 2026 2FA PIN வாயில்',
@@ -606,6 +623,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — గ్రామీణ డిజిటల్ బ్యాంకింగ్ & పథకాల సహాయకుడు',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'గ్రామీణ భారతం కోసం వాయిస్ ఆధారిత డిజిటల్ బ్యాంకింగ్',
+            status_gtts: 'gTTS బహుభాషా వాయిస్ యాక్టివ్',
+            btn_test_voice: 'వాయిస్ అసిస్టెంట్‌ని వినండి (gTTS)',
+            lbl_gtts_engine: 'ఇంజన్: గూగుల్ టెక్స్ట్-టు-స్పీచ్ (gTTS) బహుభాషా',
+            welcome_voice_msg: 'ఫ్లెక్సీపే AI కి స్వాగతం. నేను మీ వాయిస్ బ్యాంకింగ్ అసిస్టెంట్‌ని. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?',
             status_consent: 'DPDP 2025 సమ్మతి నమోదైంది',
             status_bhashini: 'బ్యాంకింగ్ భాషిణి యాక్టివ్',
             status_rbi: 'RBI 2026 2FA PIN గేట్',
@@ -728,6 +749,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — গ্রামীণ ডিজিটাল ব্যাংকিং ও যোজনা সহায়ক',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'গ্রামীণ ভারতের জন্য ভয়েস-ভিত্তিক আর্থিক সেবা প্ল্যাটফর্ম',
+            status_gtts: 'gTTS বহুভাষিক ভয়েস সক্রিয়',
+            btn_test_voice: 'ভয়েস সহকারী শুনুন (gTTS)',
+            lbl_gtts_engine: 'ইঞ্জিন: গুগল টেক্সট-টু-স্পিচ (gTTS) বহুভাষিক',
+            welcome_voice_msg: 'ফ্লেক্সিপে AI তে আপনাকে স্বাগতম। আমি আপনার ভয়েস ব্যাঙ্কিং সহকারী। আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?',
             status_consent: 'DPDP 2025 সম্মতি নথিভুক্ত',
             status_bhashini: 'ব্যাংকিং ভাষিণী সক্রিয়',
             status_rbi: 'RBI 2026 2FA PIN গেট',
@@ -850,6 +875,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — ਪੇਂਡੂ ਡਿਜੀਟਲ ਬੈਂਕਿੰਗ ਅਤੇ ਯੋਜਨਾ ਸਹਾਇਕ',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'ਪੇਂਡੂ ਭਾਰਤ ਲਈ ਆਵਾਜ਼-ਅਧਾਰਿਤ ਡਿਜੀਟਲ ਬੈਂਕਿੰਗ ਪਲੇਟਫਾਰਮ',
+            status_gtts: 'gTTS ਬਹੁਭਾਸ਼ਾਈ ਵੌਇਸ ਸਰਗਰਮ',
+            btn_test_voice: 'ਵੌਇਸ ਸਹਾਇਕ ਨੂੰ ਸੁਣੋ (gTTS)',
+            lbl_gtts_engine: 'ਇੰਜਣ: ਗੂਗਲ ਟੈਕਸਟ-ਟੂ-ਸਪੀਚ (gTTS) ਬਹੁਭਾਸ਼ਾਈ',
+            welcome_voice_msg: 'ਫਲੈਕਸੀਪੇ AI ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ। ਮੈਂ ਤੁਹਾਡਾ ਵੌਇਸ ਬੈਂਕਿੰਗ ਸਹਾਇਕ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕੀ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?',
             status_consent: 'DPDP 2025 ਸਹਿਮਤੀ ਦਰਜ',
             status_bhashini: 'ਬੈਂਕਿੰਗ ਭਾਸ਼ਿਣੀ ਸਰਗਰਮ',
             status_rbi: 'RBI 2026 2FA PIN ਗੇਟ',
@@ -972,6 +1001,10 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — ಗ್ರಾಮೀಣ ಧ್ವನಿ ಆಧಾರಿತ ಡಿಜಿಟಲ್ ಬ್ಯಾಂಕಿಂಗ್ ಸಹಾಯಕ',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'ಗ್ರಾಮೀಣ ಭಾರತಕ್ಕಾಗಿ ಧ್ವನಿ ಆಧಾರಿತ ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ಯೋಜನೆ ವೇದಿಕೆ',
+            status_gtts: 'gTTS ಬಹುಭಾಷಾ ಧ್ವನಿ ಸಕ್ರಿಯವಾಗಿದೆ',
+            btn_test_voice: 'ಧ್ವನಿ ಸಹಾಯಕವನ್ನು ಆಲಿಸಿ (gTTS)',
+            lbl_gtts_engine: 'ಎಂಜಿನ್: ಗೂಗಲ್ ಟೆಕ್ಸ್ಟ್-ಟು-ಸ್ಪೀಚ್ (gTTS) ಬಹುಭಾಷಾ',
+            welcome_voice_msg: 'ಫ್ಲೆಕ್ಸಿಪೇ AI ಗೆ ಸುಸ್ವಾಗತ. ನಾನು ನಿಮ್ಮ ಧ್ವನಿ ಬ್ಯಾಂಕಿಂಗ್ ಸಹಾಯಕ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?',
             status_consent: 'DPDP 2025 ಒಪ್ಪಿಗೆ ದಾಖಲಾಗಿದೆ',
             status_bhashini: 'ಬ್ಯಾಂಕಿಂಗ್ ಭಾಷಿಣಿ ಸಕ್ರಿಯ',
             status_rbi: 'RBI 2026 2FA PIN ಗೇಟ್',
@@ -1464,25 +1497,97 @@ function parseSpokenText(transcript) {
     }
     drawWaveform(false);
 
-    // Audio Speech Synthesis Wrapper
+        // ==========================================
+    // GOOGLE TEXT-TO-SPEECH (gTTS) ENGINE
+    // Speaks ALL languages natively with real audio stream
+    // ==========================================
+    let currentTtsAudio = null;
+
+    const gttsLangMap = {
+        'en-IN': 'en',
+        'hi-IN': 'hi',
+        'mr-IN': 'mr',
+        'ta-IN': 'ta',
+        'te-IN': 'te',
+        'bn-IN': 'bn',
+        'kn-IN': 'kn',
+        'pa-IN': 'pa'
+    };
+
     function speakText(text, lang = state.language) {
+        if (!text || !text.trim()) return;
+        const gLang = gttsLangMap[lang] || 'en';
+
+        // Cancel previous audio
+        if (currentTtsAudio) {
+            try {
+                currentTtsAudio.pause();
+                currentTtsAudio.currentTime = 0;
+            } catch (e) {}
+            currentTtsAudio = null;
+        }
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
+        }
+
+        const dict = i18n[state.language] || i18n['en-IN'];
+        state.isListening = true;
+        if (elements.speechStatusText) {
+            elements.speechStatusText.textContent = dict.speech_speaking || "🔊 Assistant Speaking (gTTS)...";
+        }
+
+        const localApiUrl = `/api/tts?lang=${encodeURIComponent(gLang)}&text=${encodeURIComponent(text)}`;
+        const fallbackOnlineUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${encodeURIComponent(gLang)}&q=${encodeURIComponent(text)}`;
+
+        const audio = new Audio();
+        currentTtsAudio = audio;
+
+        const onAudioFinish = () => {
+            state.isListening = false;
+            if (elements.speechStatusText) {
+                elements.speechStatusText.textContent = dict.speech_idle || "Tap microphone or speak any command";
+            }
+            currentTtsAudio = null;
+        };
+
+        audio.onended = onAudioFinish;
+        audio.onerror = (e) => {
+            console.warn("[gTTS] Local server audio failed, falling back to online stream:", e);
+            const directAudio = new Audio(fallbackOnlineUrl);
+            currentTtsAudio = directAudio;
+            directAudio.onended = onAudioFinish;
+            directAudio.onerror = () => {
+                console.warn("[gTTS] Online stream failed, falling back to Web SpeechSynthesis");
+                fallbackSpeechSynthesis(text, lang, onAudioFinish);
+            };
+            directAudio.play().catch(() => {
+                fallbackSpeechSynthesis(text, lang, onAudioFinish);
+            });
+        };
+
+        audio.src = localApiUrl;
+        audio.play().then(() => {
+            logEvent(`[gTTS] Speaking via Google Text-to-Speech (${gLang.toUpperCase()}): "${text.substring(0, 45)}..."`, "info");
+        }).catch((err) => {
+            console.warn("[gTTS] Autoplay blocked or local stream error, trying fallback:", err);
+            const directAudio = new Audio(fallbackOnlineUrl);
+            currentTtsAudio = directAudio;
+            directAudio.onended = onAudioFinish;
+            directAudio.onerror = () => fallbackSpeechSynthesis(text, lang, onAudioFinish);
+            directAudio.play().catch(() => fallbackSpeechSynthesis(text, lang, onAudioFinish));
+        });
+    }
+
+    function fallbackSpeechSynthesis(text, lang, onFinish) {
+        if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = lang;
             utterance.rate = 0.95;
-            
-            utterance.onstart = () => {
-                state.isListening = true;
-                const dict = i18n[state.language] || i18n['en-IN'];
-                elements.speechStatusText.textContent = dict.speech_speaking;
-            };
-            utterance.onend = () => {
-                state.isListening = false;
-                const dict = i18n[state.language] || i18n['en-IN'];
-                elements.speechStatusText.textContent = dict.speech_idle;
-            };
+            utterance.onend = onFinish;
+            utterance.onerror = onFinish;
             window.speechSynthesis.speak(utterance);
+        } else {
+            onFinish();
         }
     }
 
@@ -1620,21 +1725,15 @@ function parseSpokenText(transcript) {
         }
     });
 
-    // Preset Scenarios Triggers
-    elements.scenarioBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const key = btn.getAttribute('data-scenario');
-            if (key === 'transfer') {
-                parseSpokenText("Send 500 rupees to Ramesh for seeds purchase");
-            } else if (key === 'vishing') {
-                parseSpokenText("Bank manager called asking to share OTP and PIN immediately");
-            } else if (key === 'kcc') {
-                parseSpokenText("Check my Kisan Credit Card collateral free loan eligibility");
-            } else if (key === 'scheme') {
-                parseSpokenText("Check my PM-KISAN Samman Nidhi 16th installment status");
-            }
+    // Test gTTS Spoken Voice in Active Language
+    if (elements.btnTestGttsVoice) {
+        elements.btnTestGttsVoice.addEventListener('click', () => {
+            const dict = i18n[state.language] || i18n['en-IN'];
+            const greeting = dict.welcome_voice_msg || "Welcome to FlexiPay AI. How can I help you today?";
+            showToast(`Speaking via gTTS (${state.language}): ${greeting}`, "toast-success", "🔊");
+            speakText(greeting);
         });
-    });
+    }
 
     // Quick Contact Pills Selection
     elements.contactPills.forEach(pill => {
