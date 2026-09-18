@@ -121,6 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 Consent Logged',
             status_bhashini: 'Banking BHASHINI Active',
             status_rbi: 'RBI 2026 2FA PIN Gate',
+            nav_voice_hub: 'Voice AI Hub',
+            nav_payment: 'Money Transfer',
+            nav_balance: 'Bank Balance',
+            nav_fraud: 'Fraud Guardian',
+            nav_kcc: 'KCC Loan Hub',
+            nav_schemes: 'Govt Schemes',
+            nav_ivr: 'Feature Phone IVR',
+            nav_bankmitra: 'Bank Mitra Console',
             tab_smartphone: 'Smartphone Mode (Mic-Native UI)',
             tab_ivr: 'Feature Phone IVR (UPI 123Pay)',
             tab_bankmitra: 'Bank Mitra / CSC Operator Console',
@@ -235,6 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 सहमति दर्ज',
             status_bhashini: 'बैंकिंग भाषिणी सक्रिय',
             status_rbi: 'RBI 2026 2FA PIN गेट',
+            nav_voice_hub: 'वॉयस AI हब',
+            nav_payment: 'पैसे ट्रांसफर',
+            nav_balance: 'बैंक बैलेंस',
+            nav_fraud: 'फ्रॉड गार्डियन',
+            nav_kcc: 'KCC ऋण केंद्र',
+            nav_schemes: 'सरकारी योजनाएं',
+            nav_ivr: 'फीचर फोन IVR',
+            nav_bankmitra: 'बैंक मित्र कंसोल',
             tab_smartphone: 'स्मार्टफोन मोड (वॉयस यूआई)',
             tab_ivr: 'फीचर फोन IVR (UPI 123Pay)',
             tab_bankmitra: 'बैंक मित्र / CSC ऑपरेटर कंसोल',
@@ -349,6 +365,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 संमती नोंदवली',
             status_bhashini: 'बँकिंग भाषिणी सक्रिय',
             status_rbi: 'RBI 2026 2FA PIN गेट',
+            nav_voice_hub: 'व्हॉईस AI हब',
+            nav_payment: 'पैसे पाठवा',
+            nav_balance: 'बँक शिल्लक',
+            nav_fraud: 'फ्रॉड गार्डियन',
+            nav_kcc: 'KCC कर्ज केंद्र',
+            nav_schemes: 'सरकारी योजना',
+            nav_ivr: 'फीचर फोन IVR',
+            nav_bankmitra: 'बँक मित्र कन्सोल',
             tab_smartphone: 'स्मार्टफोन मोड (व्हॉईस UI)',
             tab_ivr: 'फीचर फोन IVR (UPI 123Pay)',
             tab_bankmitra: 'बँक मित्र / CSC कन्सोल',
@@ -463,6 +487,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 ஒப்புதல் பதிவு',
             status_bhashini: 'வங்கி பாஷினி செயலில்',
             status_rbi: 'RBI 2026 2FA PIN வாயில்',
+            nav_voice_hub: 'குரல் AI மையம்',
+            nav_payment: 'பணப்பரிமாற்றம்',
+            nav_balance: 'வங்கி இருப்பு',
+            nav_fraud: 'மோசடி தடுப்பு',
+            nav_kcc: 'KCC கடன் மையம்',
+            nav_schemes: 'அரசு திட்டங்கள்',
+            nav_ivr: 'பீச்சர் போன் IVR',
+            nav_bankmitra: 'வங்கி மித்ரா கன்சோல்',
             tab_smartphone: 'ஸ்மார்ட்போன் பயன்முறை',
             tab_ivr: 'பீச்சர் போன் IVR (UPI 123Pay)',
             tab_bankmitra: 'வங்கி மித்ரா / CSC கன்சோல்',
@@ -577,6 +609,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 సమ్మతి నమోదైంది',
             status_bhashini: 'బ్యాంకింగ్ భాషిణి యాక్టివ్',
             status_rbi: 'RBI 2026 2FA PIN గేట్',
+            nav_voice_hub: 'వాయిస్ AI హబ్',
+            nav_payment: 'డబ్బు బదిలీ',
+            nav_balance: 'బ్యాంక్ బ్యాలెన్స్',
+            nav_fraud: 'మోసం నివారణ',
+            nav_kcc: 'KCC రుణ కేంద్రం',
+            nav_schemes: 'ప్రభుత్వ పథకాలు',
+            nav_ivr: 'ఫీచర్ ఫోన్ IVR',
+            nav_bankmitra: 'బ్యాంక్ మిత్ర కన్సోల్',
             tab_smartphone: 'స్మార్ట్‌ఫోన్ మోడ్',
             tab_ivr: 'ఫీచర్ ఫోన్ IVR (UPI 123Pay)',
             tab_bankmitra: 'బ్యాంక్ మిత్ర / CSC కన్సోల్',
@@ -691,6 +731,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 সম্মতি নথিভুক্ত',
             status_bhashini: 'ব্যাংকিং ভাষিণী সক্রিয়',
             status_rbi: 'RBI 2026 2FA PIN গেট',
+            nav_voice_hub: 'ভয়েস AI হাব',
+            nav_payment: 'টাকা পাঠানো',
+            nav_balance: 'ব্যাঙ্ক ব্যালেন্স',
+            nav_fraud: 'জালিয়াতি প্রতিরোধ',
+            nav_kcc: 'KCC ঋণ কেন্দ্র',
+            nav_schemes: 'সরকারি প্রকল্প',
+            nav_ivr: 'ফিচার ফোন IVR',
+            nav_bankmitra: 'ব্যাঙ্ক মিত্র কনসোল',
             tab_smartphone: 'স্মার্টফোন মোড',
             tab_ivr: 'ফিচার ফোন IVR (UPI 123Pay)',
             tab_bankmitra: 'ব্যাংক মিত্র / CSC কনসোল',
@@ -805,6 +853,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 ਸਹਿਮਤੀ ਦਰਜ',
             status_bhashini: 'ਬੈਂਕਿੰਗ ਭਾਸ਼ਿਣੀ ਸਰਗਰਮ',
             status_rbi: 'RBI 2026 2FA PIN ਗੇਟ',
+            nav_voice_hub: 'ਵੌਇਸ AI ਹੱਬ',
+            nav_payment: 'ਪੈਸੇ ਟ੍ਰਾਂਸਫਰ',
+            nav_balance: 'ਬੈਂਕ ਬੈਲੇਂਸ',
+            nav_fraud: 'ਧੋਖਾਧੜੀ ਰੋਕਥਾਮ',
+            nav_kcc: 'KCC ਕਰਜ਼ਾ ਹੱਬ',
+            nav_schemes: 'ਸਰਕਾਰੀ ਸਕੀਮਾਂ',
+            nav_ivr: 'ਫੀਚਰ ਫੋਨ IVR',
+            nav_bankmitra: 'ਬੈਂਕ ਮਿੱਤਰ ਕੰਸੋਲ',
             tab_smartphone: 'ਸਮਾਰਟਫੋਨ ਮੋਡ',
             tab_ivr: 'ਫੀਚਰ ਫੋਨ IVR (UPI 123Pay)',
             tab_bankmitra: 'ਬੈਂਕ ਮਿੱਤਰ / CSC ਕੰਸੋਲ',
@@ -919,6 +975,14 @@ document.addEventListener('DOMContentLoaded', () => {
             status_consent: 'DPDP 2025 ಒಪ್ಪಿಗೆ ದಾಖಲಾಗಿದೆ',
             status_bhashini: 'ಬ್ಯಾಂಕಿಂಗ್ ಭಾಷಿಣಿ ಸಕ್ರಿಯ',
             status_rbi: 'RBI 2026 2FA PIN ಗೇಟ್',
+            nav_voice_hub: 'ಧ್ವನಿ AI ಕೇಂದ್ರ',
+            nav_payment: 'ಹಣ ವರ್ಗಾವಣೆ',
+            nav_balance: 'ಬ್ಯಾಂಕ್ ಬ್ಯಾಲೆನ್ಸ್',
+            nav_fraud: 'ವಂಚನೆ ತಡೆಗೋಡೆ',
+            nav_kcc: 'KCC ಸಾಲ ಕೇಂದ್ರ',
+            nav_schemes: 'ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು',
+            nav_ivr: 'ಫೀಚರ್ ಫೋನ್ IVR',
+            nav_bankmitra: 'ಬ್ಯಾಂಕ್ ಮಿತ್ರ ಕನ್ಸೋಲ್',
             tab_smartphone: 'ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಮೋಡ್',
             tab_ivr: 'ಫೀಚರ್ ಫೋನ್ IVR (UPI 123Pay)',
             tab_bankmitra: 'ಬ್ಯಾಂಕ್ ಮಿತ್ರ / CSC ಕನ್ಸೋಲ್',
@@ -1030,7 +1094,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // REAL-TIME NLU PARSER & ENTITY EXTRACTION
     // ==========================================
-    function parseSpokenText(transcript) {
+        // ==========================================
+    // DEDICATED CHANNEL / TASK TAB SWITCHER
+    // ==========================================
+    function switchToTab(targetChannel) {
+        if (!targetChannel) return;
+        elements.channelTabs.forEach(t => {
+            if (t.getAttribute('data-channel') === targetChannel) {
+                t.classList.add('active');
+            } else {
+                t.classList.remove('active');
+            }
+        });
+        state.activeChannel = targetChannel;
+
+        elements.channelViews.forEach(view => {
+            if (view.id === `channel-${targetChannel}`) {
+                view.classList.remove('hidden');
+                view.classList.add('active');
+            } else {
+                view.classList.add('hidden');
+                view.classList.remove('active');
+            }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        logEvent(`[NAV] Switched view to: ${targetChannel.toUpperCase()}`);
+    }
+
+function parseSpokenText(transcript) {
         if (!transcript || !transcript.trim()) return;
         const clean = transcript.toLowerCase();
         logEvent(`[NLU ENGINE] Processing spoken command: "${transcript}"`, "info");
@@ -1056,6 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (scamMatches >= 2 || /share otp|tell pin|password|लॉटरी|ओटीपी बताओ/i.test(clean)) {
             // TRIGGER HIGH-RISK SCAM INTERCEPT
             updateStepper(3);
+            switchToTab("fraud");
             playWarningBuzz();
             elements.intentType.textContent = "VISHING_SCAM_DETECTED";
             elements.intentRecipient.textContent = "UNKNOWN_THREAT";
@@ -1106,6 +1199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isBalance) {
             // BALANCE CHECK INTENT
             updateStepper(3);
+            switchToTab("balance");
             elements.intentType.textContent = "BALANCE_CHECK";
             elements.intentRecipient.textContent = "SBI Gramin Account";
             elements.intentAmount.textContent = "₹12,450.50";
@@ -1131,6 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isScheme) {
             // SCHEME QUERY INTENT
             updateStepper(3);
+            switchToTab("schemes");
             elements.intentType.textContent = "SCHEME_QUERY";
             elements.intentRecipient.textContent = "PM-KISAN DBT";
             elements.intentAmount.textContent = "₹2,000.00";
@@ -1153,6 +1248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isKcc) {
             // KCC INTENT
             updateStepper(3);
+            switchToTab("kcc");
             elements.intentType.textContent = "KCC_LOAN_ENQUIRY";
             elements.intentRecipient.textContent = "Kisan Rin Portal";
             elements.intentAmount.textContent = "₹2,00,000.00";
@@ -1174,6 +1270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // DEFAULT TO PAYMENT INTENT (OR PARSED PAYMENT)
         updateStepper(3);
+        switchToTab("payment");
         elements.intentType.textContent = "P2P_TRANSFER";
 
         // Amount Extraction
@@ -1436,25 +1533,11 @@ document.addEventListener('DOMContentLoaded', () => {
         logEvent(`[UI] Switched to ${isLight ? 'Light' : 'Dark'} visual mode.`);
     });
 
-    // Channel Switching
+    // Channel / Task Mode Switching
     elements.channelTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            elements.channelTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
             const targetChannel = tab.getAttribute('data-channel');
-            state.activeChannel = targetChannel;
-
-            elements.channelViews.forEach(view => {
-                if (view.id === `channel-${targetChannel}`) {
-                    view.classList.remove('hidden');
-                    view.classList.add('active');
-                } else {
-                    view.classList.add('hidden');
-                    view.classList.remove('active');
-                }
-            });
-
-            logEvent(`[CHANNEL] Switched active access channel to: ${targetChannel.toUpperCase()}`);
+            switchToTab(targetChannel);
         });
     });
 
