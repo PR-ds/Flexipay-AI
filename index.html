@@ -143,6 +143,49 @@
 
     <!-- Main Workspace -->
     <main class="app-main">
+        <!-- 5-Step Transaction Pipeline Stepper -->
+        <div class="pipeline-stepper" id="pipeline-stepper">
+            <div class="step-node active" id="step-node-1">
+                <div class="step-circle">1</div>
+                <div class="step-info">
+                    <span class="step-label">Voice Intent</span>
+                    <span class="step-desc">Spoken Dialect</span>
+                </div>
+            </div>
+            <div class="step-connector" id="connector-1"></div>
+            <div class="step-node" id="step-node-2">
+                <div class="step-circle">2</div>
+                <div class="step-info">
+                    <span class="step-label">BHASHINI NLU</span>
+                    <span class="step-desc">Entity Extraction</span>
+                </div>
+            </div>
+            <div class="step-connector" id="connector-2"></div>
+            <div class="step-node" id="step-node-3">
+                <div class="step-circle">3</div>
+                <div class="step-info">
+                    <span class="step-label">Fraud Guardian</span>
+                    <span class="step-desc">Heuristic Defense</span>
+                </div>
+            </div>
+            <div class="step-connector" id="connector-3"></div>
+            <div class="step-node" id="step-node-4">
+                <div class="step-circle">4</div>
+                <div class="step-info">
+                    <span class="step-label">Mandatory 2FA</span>
+                    <span class="step-desc">UPI PIN Gate</span>
+                </div>
+            </div>
+            <div class="step-connector" id="connector-4"></div>
+            <div class="step-node" id="step-node-5">
+                <div class="step-circle">5</div>
+                <div class="step-info">
+                    <span class="step-label">Settlement</span>
+                    <span class="step-desc">NPCI Core Rails</span>
+                </div>
+            </div>
+        </div>
+
         <!-- CHANNEL 1: SMARTPHONE MIC-NATIVE UI -->
         <section id="channel-smartphone" class="channel-view active">
             <div class="grid-layout">
@@ -578,6 +621,9 @@
             <p class="footer-sub">Designed for RBI 2025/2026 Directions, DPDP Rules 2025, Banking BHASHINI & NPCI UPI 123Pay Rails.</p>
         </div>
     </footer>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
 
     <!-- Application Script -->
     <script src="app.js"></script>

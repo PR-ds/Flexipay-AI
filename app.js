@@ -689,7 +689,58 @@ document.addEventListener('DOMContentLoaded', () => {
         logEvent(`[I18N] Entire application language dynamically updated to: ${dict.lang_display}`, "success");
     }
 
-    // Canvas Waveform Animation Setup
+    // 5-Step Transaction Pipeline Stepper Tracker
+    function updateStepper(step) {
+        for (let i = 1; i <= 5; i++) {
+            const node = document.getElementById(`step-node-${i}`);
+            const conn = document.getElementById(`connector-${i}`);
+            if (node) {
+                node.classList.remove('active', 'completed');
+                if (i < step) {
+                    node.classList.add('completed');
+                } else if (i === step) {
+                    node.classList.add('active');
+                }
+            }
+            if (conn) {
+                if (i < step) {
+                    conn.style.setProperty('--step-fill', '100%');
+                    conn.classList.add('completed');
+                } else {
+                    conn.classList.remove('completed');
+                }
+            }
+        }
+    }
+
+    // Modern Toast Notification Utility
+    function showToast(msg, type = 'toast-success', icon = '✅') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `<span style="font-size: 1.2rem;">${icon}</span> <span>${msg}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(12px) scale(0.96)';
+            setTimeout(() => toast.remove(), 250);
+        }, 3600);
+    }
+
+    // Sound Synthesizers for UI feedback
+    function playSuccessChime() {
+        playBeep(523.25, 'triangle', 0.12);
+        setTimeout(() => playBeep(659.25, 'triangle', 0.14), 100);
+        setTimeout(() => playBeep(783.99, 'triangle', 0.28), 220);
+    }
+
+    function playWarningBuzz() {
+        playBeep(220, 'sawtooth', 0.18);
+        setTimeout(() => playBeep(180, 'sawtooth', 0.25), 140);
+    }
+
+    // Canvas Multi-Layer Glowing Waveform
     const ctx = elements.canvas.getContext('2d');
     let animationFrameId;
 
@@ -698,20 +749,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const width = elements.canvas.width;
         const height = elements.canvas.height;
         const centerY = height / 2;
+        const time = Date.now() * 0.0035;
 
+        // Layer 1: Ambient background wave
         ctx.beginPath();
-        ctx.lineWidth = active ? 3 : 1.5;
-        ctx.strokeStyle = active ? '#10b981' : '#3b82f6';
-
-        const time = Date.now() * 0.005;
+        ctx.lineWidth = active ? 3.5 : 1.5;
+        ctx.strokeStyle = active ? 'rgba(16, 185, 129, 0.85)' : 'rgba(56, 189, 248, 0.4)';
         for (let x = 0; x < width; x += 2) {
-            const freq = active ? 0.05 : 0.02;
-            const amp = active ? 25 * Math.sin(x * 0.01 + time) : 5;
+            const freq = active ? 0.04 : 0.015;
+            const amp = active ? 28 * Math.sin(x * 0.01 + time * 1.5) : 6;
             const y = centerY + Math.sin(x * freq + time) * amp;
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         }
         ctx.stroke();
+
+        // Layer 2: Glowing foreground harmonic wave (only when active)
+        if (active) {
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'rgba(245, 158, 11, 0.7)';
+            for (let x = 0; x < width; x += 2) {
+                const freq = 0.03;
+                const amp = 18 * Math.cos(x * 0.008 - time);
+                const y = centerY + Math.cos(x * freq - time * 0.8) * amp;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
 
         animationFrameId = requestAnimationFrame(() => drawWaveform(state.isListening));
     }
@@ -868,6 +934,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Reset Scam alert box status
         if (key === 'vishing') {
+            updateStepper(3);
+            playWarningBuzz();
             elements.scamAlertBox.innerHTML = `
                 <div class="scam-alert-header red">
                     <span class="alert-icon">🚨</span>
@@ -879,6 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             elements.scamAlertBox.parentElement.classList.add('danger-border');
             logEvent(`[FRAUD GUARDIAN] Vishing threat detected in audio stream. Threat score: 99/100.`, "danger");
+            showToast(state.language.startsWith('hi') ? "सावधान! नकली कॉल व OTP फ्रॉड पहचाना गया।" : "HIGH RISK SCAM BLOCKED! Fraudulent OTP request intercepted.", "toast-danger", "🚨");
         } else {
             elements.scamAlertBox.innerHTML = `
                 <div class="scam-alert-header green">
@@ -890,6 +959,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             elements.scamAlertBox.parentElement.classList.remove('danger-border');
+            
+            if (key === 'transfer') {
+                updateStepper(3);
+                showToast("Voice Intent Parsed & Fraud Screen Passed", "toast-success", "🎙️");
+            } else if (key === 'kcc') {
+                showToast("Kisan Credit Card Eligibility Verified", "toast-success", "🚜");
+            } else if (key === 'scheme') {
+                showToast("PM-KISAN DBT 16th Installment Status Retrieved", "toast-success", "📜");
+            }
         }
 
         speakText(scenarioConfig.speech);
@@ -918,6 +996,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const dict = i18n[state.language] || i18n['en-IN'];
+        updateStepper(1);
 
         if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -930,12 +1009,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 elements.btnMicMain.classList.add('listening');
                 elements.speechStatusText.textContent = dict.speech_listening;
                 logEvent("[SPEECH RECOGNITION] Mic recording started.", "info");
+                showToast("Listening to your voice...", "toast-success", "🎙️");
             };
 
             recognition.onresult = (event) => {
                 const text = event.results[0][0].transcript;
                 elements.liveTranscript.textContent = `"${text}"`;
                 logEvent(`[SPEECH RECOGNITION] Captured text: "${text}"`, "success");
+                updateStepper(2);
                 triggerScenario('transfer');
             };
 
@@ -956,9 +1037,11 @@ document.addEventListener('DOMContentLoaded', () => {
             state.isListening = true;
             elements.btnMicMain.classList.add('listening');
             elements.speechStatusText.textContent = dict.speech_listening;
+            showToast("Simulating voice audio input...", "toast-success", "🎙️");
             setTimeout(() => {
                 state.isListening = false;
                 elements.btnMicMain.classList.remove('listening');
+                updateStepper(2);
                 triggerScenario('transfer');
             }, 1800);
         }
@@ -996,12 +1079,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePinDisplay();
         elements.pinModal.classList.remove('hidden');
         elements.pinModal.classList.add('active');
+        updateStepper(4);
         logEvent("[RBI 2026 2FA] Mandatory 2-Factor UPI PIN gate presented.", "warn");
     });
 
     elements.btnClosePinModal.addEventListener('click', () => {
         elements.pinModal.classList.remove('active');
         elements.pinModal.classList.add('hidden');
+        updateStepper(3);
         logEvent("[TRANSACTION] Payment cancelled by user at PIN stage.");
     });
 
@@ -1013,16 +1098,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const txRef = 'NPCI/2026/' + Math.floor(100000000 + Math.random() * 900000000);
             logEvent(`[NPCI SANDBOX] Dynamic 2FA PIN verified. Executed ₹500 transfer. Ref: ${txRef}`, "success");
             
+            updateStepper(5);
+            playSuccessChime();
+            
             if (state.language.startsWith('hi')) {
                 speakText("आपका ₹500 का भुगतान सफलतापूर्वक संपन्न हो गया है। एनपीसीआई रसीद संख्या " + txRef);
             } else {
                 speakText("Your payment of ₹500 has been completed successfully. NPCI receipt number " + txRef);
             }
             
-            alert(`✅ Payment Successful!\n\nAmount: ₹500.00\nRecipient: Ramesh (Seeds Purchase)\nNPCI Ref: ${txRef}\nCompliance: RBI 2026 2FA Verified`);
+            showToast(`₹500.00 transferred to Ramesh (NPCI Ref: ${txRef})`, "toast-success", "🎉");
             state.pinEntered = '';
         } else {
+            playWarningBuzz();
             speakText(state.language.startsWith('hi') ? "कृपया पूरा 4 अंकों का UPI PIN दर्ज करें" : "Please enter the full 4-digit UPI PIN");
+            showToast("Please enter all 4 digits of your UPI PIN", "toast-warn", "⚠️");
         }
     });
 
@@ -1096,12 +1186,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     elements.btnBmGenerateSlip.addEventListener('click', () => {
-        alert("📄 Digital Slip Generated & Sent to Kisan Rin Portal!");
+        showToast("Digital Slip Generated & Sent to Kisan Rin Portal!", "toast-success", "📄");
         logEvent("[BANK MITRA CONSOLE] Digital slip submitted to bank portal.", "success");
     });
 
     elements.btnBmBookKyc.addEventListener('click', () => {
-        alert("📹 RBI Video-KYC slot scheduled for tomorrow at 11:00 AM.");
+        showToast("RBI Video-KYC slot scheduled for tomorrow at 11:00 AM.", "toast-success", "📹");
         logEvent("[BANK MITRA CONSOLE] Video-KYC slot booked.");
     });
 
@@ -1118,13 +1208,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     elements.btnScheduleKccReminder.addEventListener('click', () => {
         speakText("Voice reminder scheduled for Kisan Credit Card repayment.");
-        alert("⏰ Voice Repayment Reminder Scheduled 15 Days Before Due Date!\n\nThis protects your 3% interest subvention, keeping your rate at 4%.");
+        showToast("Voice Repayment Reminder Scheduled! Rate protected at 4%.", "toast-warn", "⏰");
         logEvent("[KCC HUB] Repayment voice reminder registered in scheduler.", "success");
     });
 
     elements.btnAutofillKccList.forEach(btn => {
         btn.addEventListener('click', () => {
-            alert("📝 Jan Samarth Portal application auto-filled from Kisan Credit Card profile!");
+            showToast("Jan Samarth Portal application auto-filled from KCC profile!", "toast-success", "📝");
             logEvent("[KCC HUB] Jan Samarth application form auto-filled.", "info");
         });
     });
