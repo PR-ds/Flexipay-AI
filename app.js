@@ -96,6 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btnBmVoiceIntake: document.getElementById('btn-bm-voice-intake'),
         btnBmGenerateSlip: document.getElementById('btn-bm-generate-slip'),
         btnBmBookKyc: document.getElementById('btn-bm-book-kyc'),
+        
+        // Consequence & Dispute Elements
+        consequenceRecipient: document.getElementById('consequence-recipient'),
+        consequenceAmount: document.getElementById('consequence-amount'),
+        consequenceBalance: document.getElementById('consequence-balance'),
+        btnVoiceExplainDispute: document.getElementById('btn-voice-explain-dispute'),
+        btnFileOmbudsmanTicket: document.getElementById('btn-file-ombudsman-ticket'),
         bmSlipDisplay: document.getElementById('bm-slip-display'),
 
         // KCC Calculator Elements
@@ -119,6 +126,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — Voice-Native Rural Financial & Scheme Layer',
             brand_tag: 'फ्लेक्सीपे AI',
             brand_subtitle: 'Voice-Native Rural Financial & Scheme Layer',
+            nav_dispute: 'Dispute & Recovery',
+            c_dir_label: '1. Direction of Money',
+            c_dir_val: '🔴 OUTBOUND (Leaving Account)',
+            c_recipient_label: '2. Recipient',
+            c_amount_label: '3. Deduction Amount',
+            c_balance_label: '4. Resulting Balance',
+            dispute_title: 'Problem Resolution & Auto-Reversal Desk',
+            badge_rbi_sla: 'RBI T+1 SLA Active',
+            dispute_desc: 'Automated recovery layer for transactions debited from your account but uncredited at the merchant or ATM.',
+            dtx_status: 'Debited • In Transit',
+            dtx_to: 'To:',
+            dtx_code: 'Failure Code:',
+            dtx_time: 'Attempted:',
+            dtx_auto_reversal: 'RBI Auto-Reversal Deadline: 23 hrs 46 mins',
+            dtx_comp_rule: 'RBI Mandate: ₹100/day compensation payable if delayed beyond T+1',
+            btn_voice_explain_dispute: 'Explain Where My Money Is (Voice Audio)',
+            btn_file_ombudsman: 'Auto-Draft RBI Ombudsman & 1930 Helpline Ticket',
+            complaint_slip_title: 'Official Grievance Redressal Slip',
+            badge_ready_file: 'Ready to File',
+            stamp_dispute: 'RBI CMS COMPLIANT',
+            complaint_slip_heading: 'NPCI & Banking Ombudsman Complaint',
             status_gtts: 'gTTS Multilingual Voice Active',
             btn_test_voice: 'Listen to Voice Assistant (gTTS)',
             lbl_gtts_engine: 'Engine: Google Text-to-Speech (gTTS) Multilingual',
@@ -245,6 +273,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'फ्लेक्सीपे AI — वॉयस-नेविगेटेड ग्रामीण वित्तीय व योजना सहायक',
             brand_tag: 'फ्लेक्सीपे AI',
             brand_subtitle: 'ग्रामीण भारत के लिए वॉयस-आधारित वित्तीय व सरकारी योजना प्लेटफ़ॉर्म',
+            nav_dispute: 'विवाद व समाधान',
+            c_dir_label: '1. पैसे की दिशा',
+            c_dir_val: '🔴 जा रहे हैं (खाते से निकासी)',
+            c_recipient_label: '2. प्राप्तकर्ता',
+            c_amount_label: '3. कटने वाली राशि',
+            c_balance_label: '4. बचा हुआ बैलेंस',
+            dispute_title: 'समस्या समाधान व स्वतः वापसी डेस्क',
+            badge_rbi_sla: 'RBI T+1 नियम सक्रिय',
+            dispute_desc: 'खाते से पैसे कटने पर मर्चेंट को न मिलने वाली विफल ट्रांजैक्शन की स्वचालित रिकवरी।',
+            dtx_status: 'डेबिट हुआ • ट्रांजिट में',
+            dtx_to: 'प्राप्तकर्ता:',
+            dtx_code: 'त्रुटि कोड:',
+            dtx_time: 'समय:',
+            dtx_auto_reversal: 'RBI वापसी समय सीमा: 23 घंटे 46 मिनट',
+            dtx_comp_rule: 'RBI नियम: T+1 के बाद देरी होने पर ₹100 प्रतिदिन मुआवजा अनिवार्य',
+            btn_voice_explain_dispute: 'पैसे कहाँ हैं बोलकर समझाएं (वॉयस)',
+            btn_file_ombudsman: 'RBI लोकपाल व 1930 शिकायत पर्ची बनाएं',
+            complaint_slip_title: 'आधिकारिक शिकायत निवारण पर्ची',
+            badge_ready_file: 'दर्ज करने हेतु तैयार',
+            stamp_dispute: 'RBI CMS अधिकृत',
+            complaint_slip_heading: 'NPCI व बैंकिंग लोकपाल शिकायत',
             status_gtts: 'gTTS बहुभाषी वॉयस सक्रिय',
             btn_test_voice: 'वॉयस असिस्टेंट सुनें (gTTS)',
             lbl_gtts_engine: 'इंजन: गूगल टेक्स्ट-टू-स्पीच (gTTS) बहुभाषी',
@@ -371,6 +420,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'फ्लेक्सीपे AI — ग्रामीण डिजिटल बँकिंग व योजना सहाय्यक',
             brand_tag: 'फ्लेक्सीपे AI',
             brand_subtitle: 'ग्रामीण भारतासाठी व्हॉईस-आधारित डिजिटल बँकिंग व योजना व्यासपीठ',
+            nav_dispute: 'तक्रार व निवारण',
+            c_dir_label: '1. पैशांची दिशा',
+            c_dir_val: '🔴 बाहेर जाणारे (खात्यातून वजा)',
+            c_recipient_label: '2. प्राप्तकर्ता',
+            c_amount_label: '3. वजा होणारी रक्कम',
+            c_balance_label: '4. उर्वरित शिल्लक',
+            dispute_title: 'समस्या निवारण व ऑटो-रिव्हर्सल कक्ष',
+            badge_rbi_sla: 'RBI T+1 नियम सक्रिय',
+            dispute_desc: 'खात्यातून पैसे कट झाले पण समोरच्याला न मिळालेल्या व्यवहारांसाठी स्वयंचलित मदत.',
+            dtx_status: 'वजा झाले • प्रक्रियेत',
+            dtx_to: 'कोणाला:',
+            dtx_code: 'त्रुटी कोड:',
+            dtx_time: 'वेळ:',
+            dtx_auto_reversal: 'RBI परतावा मुदत: 23 तास 46 मिनिटे',
+            dtx_comp_rule: 'RBI नियम: वेळेत परतावा न मिळाल्यास ₹100 दररोज भरपाई',
+            btn_voice_explain_dispute: 'पैसे कुठे अडकले ते ऐका (व्हॉईस)',
+            btn_file_ombudsman: 'RBI लोकपाल व 1930 तक्रार अर्ज भरा',
+            complaint_slip_title: 'अधिकृत तक्रार पावती',
+            badge_ready_file: 'दाखल करण्यास तयार',
+            stamp_dispute: 'RBI CMS प्रमाणित',
+            complaint_slip_heading: 'NPCI आणि बँकिंग लोकपाल तक्रार',
             status_gtts: 'gTTS बहुभाषिक व्हॉईस सक्रिय',
             btn_test_voice: 'व्हॉईस असिस्टंट ऐका (gTTS)',
             lbl_gtts_engine: 'इंजिन: गुगल टेक्स्ट-टू-स्पीच (gTTS) बहुभाषिक',
@@ -497,6 +567,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — கிராமப்புற குரல் வழி வங்கி மற்றும் திட்ட உதவியாளர்',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'கிராமப்புற இந்தியாவிற்கான குரல் வழி டிஜிட்டல் வங்கி தளம்',
+            nav_dispute: 'சிக்கல் தீர்வு & மீட்பு',
+            c_dir_label: '1. பணத்தின் திசை',
+            c_dir_val: '🔴 வெளியேறும் பணம் (கணக்கிலிருந்து)',
+            c_recipient_label: '2. பெறுநர்',
+            c_amount_label: '3. கழிக்கப்படும் தொகை',
+            c_balance_label: '4. மீதமுள்ள இருப்பு',
+            dispute_title: 'பிரச்சினை தீர்வு & தானியங்கி திரும்பப்பெறுதல்',
+            badge_rbi_sla: 'RBI T+1 விதி செயலில் உள்ளது',
+            dispute_desc: 'பணம் கழிக்கப்பட்டு வணிகருக்கு சேராத பரிவர்த்தனைகளுக்கான தானியங்கி மீட்பு.',
+            dtx_status: 'கழிக்கப்பட்டது • பரிமாற்றத்தில்',
+            dtx_to: 'பெறுநர்:',
+            dtx_code: 'தோல்வி குறியீடு:',
+            dtx_time: 'நேரம்:',
+            dtx_auto_reversal: 'RBI திரும்பப்பெறும் காலக்கெடு: 23 மணி 46 நிமிடம்',
+            dtx_comp_rule: 'RBI ஆணை: தாமதமானால் நாளொன்றுக்கு ₹100 இழப்பீடு',
+            btn_voice_explain_dispute: 'பணம் எங்கே உள்ளது என்பதை விளக்குங்கள்',
+            btn_file_ombudsman: 'RBI ஒம்புட்ஸ்மேன் & 1930 புகார் படிவம் உருவாக்கவும்',
+            complaint_slip_title: 'அதிகாரப்பூர்வ குறைதீர்க்கும் சீட்டு',
+            badge_ready_file: 'தாக்கல் செய்ய தயார்',
+            stamp_dispute: 'RBI CMS இணக்கமானது',
+            complaint_slip_heading: 'NPCI & வங்கி ஒம்புட்ஸ்மேன் புகார்',
             status_gtts: 'gTTS பன்மொழி குரல் செயலில் உள்ளது',
             btn_test_voice: 'குரல் உதவியாளரைக் கேளுங்கள் (gTTS)',
             lbl_gtts_engine: 'இயந்திரம்: கூகுள் டெக்ஸ்ட்-டு-ஸ்பீச் (gTTS) பன்மொழி',
@@ -623,6 +714,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — గ్రామీణ డిజిటల్ బ్యాంకింగ్ & పథకాల సహాయకుడు',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'గ్రామీణ భారతం కోసం వాయిస్ ఆధారిత డిజిటల్ బ్యాంకింగ్',
+            nav_dispute: 'సమస్య పరిష్కారం & రికవరీ',
+            c_dir_label: '1. డబ్బు దిశ',
+            c_dir_val: '🔴 బయటకు వెళ్లేవి (ఖాతా నుండి)',
+            c_recipient_label: '2. గ్రహీత',
+            c_amount_label: '3. కట్ అయ్యే మొత్తం',
+            c_balance_label: '4. మిగిలిన బ్యాలెన్స్',
+            dispute_title: 'సమస్య పరిష్కారం & ఆటో-రివర్సల్ డెస్క్',
+            badge_rbi_sla: 'RBI T+1 నియమం యాక్టివ్',
+            dispute_desc: 'ఖాతా నుండి కట్ అయి వ్యాపారికి చేరని లావాదేవీలకు స్వయంచాలక రికవరీ.',
+            dtx_status: 'డెబిట్ అయింది • ట్రాన్సిట్‌లో ఉంది',
+            dtx_to: 'ఎవరికి:',
+            dtx_code: 'వైఫల్యం కోడ్:',
+            dtx_time: 'సమయం:',
+            dtx_auto_reversal: 'RBI రివర్సల్ గడువు: 23 గంటల 46 నిమిషాలు',
+            dtx_comp_rule: 'RBI నిబంధన: ఆలస్యమైతే రోజుకు ₹100 పరిహారం చెల్లించాలి',
+            btn_voice_explain_dispute: 'డబ్బు ఎక్కడుందో వాయిస్ ద్వారా వివరించండి',
+            btn_file_ombudsman: 'RBI అంబుడ్స్‌మన్ & 1930 ఫిర్యాదు రసీదు రూపొందించండి',
+            complaint_slip_title: 'అధికారిక ఫిర్యాదు రసీదు',
+            badge_ready_file: 'ఫైల్ చేయడానికి సిద్ధం',
+            stamp_dispute: 'RBI CMS ఆమోదించబడింది',
+            complaint_slip_heading: 'NPCI & బ్యాంకింగ్ అంబుడ్స్‌మన్ ఫిర్యాదు',
             status_gtts: 'gTTS బహుభాషా వాయిస్ యాక్టివ్',
             btn_test_voice: 'వాయిస్ అసిస్టెంట్‌ని వినండి (gTTS)',
             lbl_gtts_engine: 'ఇంజన్: గూగుల్ టెక్స్ట్-టు-స్పీచ్ (gTTS) బహుభాషా',
@@ -749,6 +861,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — গ্রামীণ ডিজিটাল ব্যাংকিং ও যোজনা সহায়ক',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'গ্রামীণ ভারতের জন্য ভয়েস-ভিত্তিক আর্থিক সেবা প্ল্যাটফর্ম',
+            nav_dispute: 'বিরোধ ও নিষ্পত্তি',
+            c_dir_label: '1. টাকার দিক',
+            c_dir_val: '🔴 বহির্মুখী (অ্যাকাউন্ট থেকে কাটা)',
+            c_recipient_label: '2. প্রাপক',
+            c_amount_label: '3. কর্তনের পরিমাণ',
+            c_balance_label: '4. অবশিষ্ট ব্যালেন্স',
+            dispute_title: 'সমস্যা সমাধান ও স্বয়ংক্রিয় ফেরত কেন্দ্র',
+            badge_rbi_sla: 'RBI T+1 নিয়ম সক্রিয়',
+            dispute_desc: 'অ্যাকাউন্ট থেকে টাকা কেটে গেলেও লেনদেন ব্যর্থ হলে স্বয়ংক্রিয় সহায়তা।',
+            dtx_status: 'কাটা হয়েছে • ট্রানজিটে আছে',
+            dtx_to: 'প্রাপক:',
+            dtx_code: 'ব্যর্থতার কোড:',
+            dtx_time: 'সময়:',
+            dtx_auto_reversal: 'RBI ফেরত সময়সীমা: 23 ঘন্টা 46 মিনিট',
+            dtx_comp_rule: 'RBI নিয়ম: দেরি হলে প্রতিদিন ₹100 ক্ষতিপূরণ দিতে হবে',
+            btn_voice_explain_dispute: 'টাকা কোথায় আছে ব্যাখ্যা শুনুন (ভয়েস)',
+            btn_file_ombudsman: 'RBI ওম্বুডসম্যান ও 1930 অভিযোগ স্লিপ বানান',
+            complaint_slip_title: 'অফিসিয়াল অভিযোগ নিষ্পত্তির স্লিপ',
+            badge_ready_file: 'জমা দিতে প্রস্তুত',
+            stamp_dispute: 'RBI CMS অনুগত',
+            complaint_slip_heading: 'NPCI ও ব্যাঙ্কিং ওম্বুডসম্যান অভিযোগ',
             status_gtts: 'gTTS বহুভাষিক ভয়েস সক্রিয়',
             btn_test_voice: 'ভয়েস সহকারী শুনুন (gTTS)',
             lbl_gtts_engine: 'ইঞ্জিন: গুগল টেক্সট-টু-স্পিচ (gTTS) বহুভাষিক',
@@ -875,6 +1008,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — ਪੇਂਡੂ ਡਿਜੀਟਲ ਬੈਂਕਿੰਗ ਅਤੇ ਯੋਜਨਾ ਸਹਾਇਕ',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'ਪੇਂਡੂ ਭਾਰਤ ਲਈ ਆਵਾਜ਼-ਅਧਾਰਿਤ ਡਿਜੀਟਲ ਬੈਂਕਿੰਗ ਪਲੇਟਫਾਰਮ',
+            nav_dispute: 'ਸ਼ਿਕਾਇਤ ਅਤੇ ਰਿਕਵਰੀ',
+            c_dir_label: '1. ਪੈਸੇ ਦੀ ਦਿਸ਼ਾ',
+            c_dir_val: '🔴 ਬਾਹਰ ਜਾ ਰਹੇ (ਖਾਤੇ ਵਿੱਚੋਂ)',
+            c_recipient_label: '2. ਪ੍ਰਾਪਤਕਰਤਾ',
+            c_amount_label: '3. ਕੱਟੀ ਜਾਣ ਵਾਲੀ ਰਕਮ',
+            c_balance_label: '4. ਬਾਕੀ ਬਕਾਇਆ',
+            dispute_title: 'ਸਮੱਸਿਆ ਹੱਲ ਅਤੇ ਆਟੋ-ਰਿਵਰਸਲ ਡੈਸਕ',
+            badge_rbi_sla: 'RBI T+1 ਨਿਯਮ ਸਰਗਰਮ',
+            dispute_desc: 'ਖਾਤੇ ਵਿੱਚੋਂ ਪੈਸੇ ਕੱਟੇ ਜਾਣ ਪਰ ਅੱਗੇ ਨਾ ਪਹੁੰਚਣ ਵਾਲੇ ਲੈਣ-ਦੇਣ ਦੀ ਰਿਕਵਰੀ।',
+            dtx_status: 'ਕੱਟੇ ਗਏ • ਪ੍ਰਕਿਰਿਆ ਅਧੀਨ',
+            dtx_to: 'ਕਿਸਨੂੰ:',
+            dtx_code: 'ਅਸਫਲਤਾ ਕੋਡ:',
+            dtx_time: 'ਸਮਾਂ:',
+            dtx_auto_reversal: 'RBI ਵਾਪਸੀ ਸਮਾਂ ਸੀਮਾ: 23 ਘੰਟੇ 46 ਮਿੰਟ',
+            dtx_comp_rule: 'RBI ਨਿਯਮ: ਦੇਰੀ ਹੋਣ ਤੇ ₹100 ਪ੍ਰਤੀ ਦਿਨ ਮੁਆਵਜ਼ਾ',
+            btn_voice_explain_dispute: 'ਪੈਸੇ ਕਿੱਥੇ ਹਨ ਆਵਾਜ਼ ਵਿੱਚ ਸੁਣੋ',
+            btn_file_ombudsman: 'RBI ਲੋਕਪਾਲ ਅਤੇ 1930 ਸ਼ਿਕਾਇਤ ਪਰਚੀ ਬਣਾਓ',
+            complaint_slip_title: 'ਅਧਿਕਾਰਤ ਸ਼ਿਕਾਇਤ ਨਿਵਾਰਨ ਸਲਿੱਪ',
+            badge_ready_file: 'ਦਾਇਰ ਕਰਨ ਲਈ ਤਿਆਰ',
+            stamp_dispute: 'RBI CMS ਅਨੁਕੂਲ',
+            complaint_slip_heading: 'NPCI ਅਤੇ ਬੈਂਕਿੰਗ ਲੋਕਪਾਲ ਸ਼ਿਕਾਇਤ',
             status_gtts: 'gTTS ਬਹੁਭਾਸ਼ਾਈ ਵੌਇਸ ਸਰਗਰਮ',
             btn_test_voice: 'ਵੌਇਸ ਸਹਾਇਕ ਨੂੰ ਸੁਣੋ (gTTS)',
             lbl_gtts_engine: 'ਇੰਜਣ: ਗੂਗਲ ਟੈਕਸਟ-ਟੂ-ਸਪੀਚ (gTTS) ਬਹੁਭਾਸ਼ਾਈ',
@@ -1001,6 +1155,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app_title: 'FlexiPay AI — ಗ್ರಾಮೀಣ ಧ್ವನಿ ಆಧಾರಿತ ಡಿಜಿಟಲ್ ಬ್ಯಾಂಕಿಂಗ್ ಸಹಾಯಕ',
             brand_tag: 'FlexiPay AI',
             brand_subtitle: 'ಗ್ರಾಮೀಣ ಭಾರತಕ್ಕಾಗಿ ಧ್ವನಿ ಆಧಾರಿತ ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ಯೋಜನೆ ವೇದಿಕೆ',
+            nav_dispute: 'ವಿವಾದ ಮತ್ತು ಪರಿಹಾರ',
+            c_dir_label: '1. ಹಣದ ದಿಕ್ಕು',
+            c_dir_val: '🔴 ಹೊರಹೋಗುವ ಹಣ (ಖಾತೆಯಿಂದ)',
+            c_recipient_label: '2. ಸ್ವೀಕರಿಸುವವರು',
+            c_amount_label: '3. ಕಡಿತಗೊಳ್ಳುವ ಮೊತ್ತ',
+            c_balance_label: '4. ಉಳಿದ ಬ್ಯಾಲೆನ್ಸ್',
+            dispute_title: 'ಸಮಸ್ಯೆ ಪರಿಹಾರ ಮತ್ತು ಸ್ವಯಂ-ಮರುಪಾವತಿ ಡೆಸ್ಕ್',
+            badge_rbi_sla: 'RBI T+1 ನಿಯಮ ಸಕ್ರಿಯ',
+            dispute_desc: 'ಖಾತೆಯಿಂದ ಹಣ ಕಡಿತಗೊಂಡು ವ್ಯಾಪಾರಿಗೆ ತಲುಪದ ವಹಿವಾಟುಗಳಿಗೆ ಸ್ವಯಂಚಾಲಿತ ಪರಿಹಾರ.',
+            dtx_status: 'ಕಡಿತಗೊಂಡಿದೆ • ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದೆ',
+            dtx_to: 'ಸ್ವೀಕರಿಸುವವರು:',
+            dtx_code: 'ವೈಫಲ್ಯದ ಕೋಡ್:',
+            dtx_time: 'ಸಮಯ:',
+            dtx_auto_reversal: 'RBI ಮರುಪಾವತಿ ಗಡುವು: 23 ಗಂಟೆ 46 ನಿಮಿಷ',
+            dtx_comp_rule: 'RBI ನಿಯಮ: ವಿಳಂಬವಾದರೆ ದಿನಕ್ಕೆ ₹100 ಪರಿಹಾರ ಪಾವತಿಸಬೇಕು',
+            btn_voice_explain_dispute: 'ಹಣ ಎಲ್ಲಿದೆ ಎಂದು ಧ್ವನಿ ಮೂಲಕ ಆಲಿಸಿ',
+            btn_file_ombudsman: 'RBI ಒಂಬುಡ್ಸ್‌ಮನ್ ಮತ್ತು 1930 ದೂರು ರಶೀದಿ ರಚಿಸಿ',
+            complaint_slip_title: 'ಅಧಿಕೃತ ಕುಂದುಕೊರತೆ ನಿವಾರಣಾ ರಶೀದಿ',
+            badge_ready_file: 'ಸಲ್ಲಿಸಲು ಸಿದ್ಧವಾಗಿದೆ',
+            stamp_dispute: 'RBI CMS ಅನುಸರಣೆ',
+            complaint_slip_heading: 'NPCI ಮತ್ತು ಬ್ಯಾಂಕಿಂಗ್ ಒಂಬುಡ್ಸ್‌ಮನ್ ದೂರು',
             status_gtts: 'gTTS ಬಹುಭಾಷಾ ಧ್ವನಿ ಸಕ್ರಿಯವಾಗಿದೆ',
             btn_test_voice: 'ಧ್ವನಿ ಸಹಾಯಕವನ್ನು ಆಲಿಸಿ (gTTS)',
             lbl_gtts_engine: 'ಎಂಜಿನ್: ಗೂಗಲ್ ಟೆಕ್ಸ್ಟ್-ಟು-ಸ್ಪೀಚ್ (gTTS) ಬಹುಭಾಷಾ',
@@ -1178,7 +1353,40 @@ function parseSpokenText(transcript) {
             if (p.test(clean)) scamMatches++;
         });
 
-        if (scamMatches >= 2 || /share otp|tell pin|password|लॉटरी|ओटीपी बताओ/i.test(clean)) {
+                // 0. Reverse UPI "Scan to Receive" Scam Detection
+        const isReverseUpiScam = /scan.*(?:receive|get|paane|पाने|मिलेंगे)|receive.*enter pin|collect request/i.test(clean);
+        if (isReverseUpiScam) {
+            updateStepper(3);
+            switchToTab("fraud");
+            playWarningBuzz();
+            elements.intentType.textContent = "REVERSE_UPI_SCAM_DETECTED";
+            elements.intentRecipient.textContent = "FAKE_COLLECT_REQUEST";
+            elements.intentAmount.textContent = "BLOCKED";
+            elements.intentFallback.textContent = "CRITICAL THREAT (1.00)";
+            elements.nluConfidence.textContent = "Confidence: 99%";
+
+            elements.scamAlertBox.innerHTML = `
+                <div class="scam-alert-header red">
+                    <span class="alert-icon">🚨</span>
+                    <div>
+                        <strong>${state.language.startsWith('hi') ? 'सावधान! रिवर्स UPI "स्कैन करके पैसे पाने" का फ्रॉड!' : 'CRITICAL ALERT! Reverse UPI "Scan to Receive" Scam Intercepted!'}</strong>
+                        <p>${state.language.startsWith('hi') ? 'क्यूआर कोड स्कैन करने या PIN डालने से हमेशा पैसे कटते हैं, पैसे मिलते नहीं। पेमेंट गेटवे लॉक कर दिया गया है।' : 'Scanning a QR code or entering a PIN always sends money OUTWARD. You never enter a PIN to receive money.'}</p>
+                    </div>
+                </div>
+            `;
+            elements.scamAlertBox.parentElement.classList.add('danger-border');
+            elements.btnTriggerPinGate.classList.add('hidden');
+
+            const reverseUpiMsg = state.language.startsWith('hi') ? 
+                "चेतावनी! क्यूआर कोड स्कैन करने या PIN डालने से पैसे कटते हैं, मिलते नहीं! पैसे पाने के लिए कभी PIN न डालें।" : 
+                "ALERT! Scanning a QR code or entering a PIN always sends money from your account. You NEVER enter a PIN to receive money. Fraud blocked!";
+            speakText(reverseUpiMsg);
+            showToast(reverseUpiMsg, "toast-danger", "🚨");
+            logEvent(`[FRAUD GUARDIAN] Reverse UPI scan-to-receive scam blocked: score 1.00. Locked.`, "danger");
+            return;
+        }
+
+if (scamMatches >= 2 || /share otp|tell pin|password|लॉटरी|ओटीपी बताओ/i.test(clean)) {
             // TRIGGER HIGH-RISK SCAM INTERCEPT
             updateStepper(3);
             switchToTab("fraud");
@@ -1229,7 +1437,26 @@ function parseSpokenText(transcript) {
         const isScheme = /scheme|yojana|योजना|pm kisan|subsidy|সব্সिडी|fasal bima|installment|किश्त/i.test(clean);
         const isKcc = /kcc|kisan credit|loan|ऋण|लोन|कर्ज|ब्याज/i.test(clean);
 
-        if (isBalance) {
+                // 1.5 Problem Resolution & Failed Transaction Recovery Intent
+        const isDispute = /failed|deducted|cut|not credited|where.*money|dispute|ombudsman|पैसे कट गए|कटे|शिकायत|वापस/i.test(clean);
+        if (isDispute) {
+            updateStepper(3);
+            switchToTab("dispute");
+            elements.intentType.textContent = "GRIEVANCE_RECOVERY";
+            elements.intentRecipient.textContent = "NPCI Reversal Gateway";
+            elements.intentAmount.textContent = "₹1,500.00";
+            elements.nluConfidence.textContent = "Confidence: 98%";
+
+            const disputeSpeech = state.language.startsWith('hi') ? 
+                "चिंता न करें। आपके ₹1,500 सुरक्षित हैं और NPCI ट्रांजिट में हैं। RBI के नियमों के अनुसार बैंक को 24 घंटे में पैसे वापस करने होंगे, अन्यथा ₹100 प्रतिदिन मुआवजा मिलेगा। आपकी शिकायत पर्ची तैयार कर दी गई है।" : 
+                "Do not worry. Your ₹1,500 is safe in NPCI transit. Under RBI guidelines, the bank must auto-reverse it within 24 hours, or pay ₹100 per day compensation. Your grievance ticket has been pre-filled.";
+            speakText(disputeSpeech);
+            showToast("Dispute & Recovery Desk: Tracking UTR 429188029141", "toast-warn", "⚖️");
+            logEvent("[GRIEVANCE REDRESSAL] Auto-reversal tracker and Ombudsman slip generated for UTR 429188029141", "warn");
+            return;
+        }
+
+if (isBalance) {
             // BALANCE CHECK INTENT
             updateStepper(3);
             switchToTab("balance");
@@ -1354,9 +1581,16 @@ function parseSpokenText(transcript) {
             payCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
+        // Calculate remaining balance consequence
+        const resultingBalance = Math.max(0, state.accountBalance - amount);
+        if (elements.consequenceRecipient) elements.consequenceRecipient.textContent = recipient;
+        if (elements.consequenceAmount) elements.consequenceAmount.textContent = `-₹${amount.toFixed(2)}`;
+        if (elements.consequenceBalance) elements.consequenceBalance.textContent = `₹${resultingBalance.toLocaleString('en-IN', {minimumFractionDigits: 2})}`;
+
+        // Strict 4-Step Consequence Disclosure: Direction -> Recipient -> Amount -> Resulting Balance
         const confirmSpeech = state.language.startsWith('hi') ? 
-            `${recipient} को ₹${amount} भेजने का अनुरोध मिला। आगे बढ़ने के लिए अपना UPI PIN दर्ज करें।` : 
-            `Received request to transfer ₹${amount} to ${recipient}. Please enter your UPI PIN to authorize.`;
+            `आप ${recipient} को भुगतान कर रहे हैं। ₹${amount.toFixed(2)} आपके खाते से कटेंगे। आपका बचा हुआ बैलेंस ₹${resultingBalance.toFixed(2)} होगा। आगे बढ़ने के लिए अपना UPI PIN दर्ज करें।` : 
+            `You are paying ${recipient}. ₹${amount.toFixed(2)} will leave your account. Your remaining balance will be ₹${resultingBalance.toFixed(2)}. Please enter your UPI PIN to authorize.`;
         speakText(confirmSpeech);
         showToast(`Ready to Transfer ₹${amount.toFixed(2)} to ${recipient}`, "toast-success", "💸");
         logEvent(`[NLU PAYMENT] Target: ${recipient}, Amount: ₹${amount}. Prepared PIN gate.`, "success");
@@ -1966,5 +2200,23 @@ function parseSpokenText(transcript) {
     });
 
     // INITIALIZATION: Apply English as default language across full page
+    
+    // Problem Resolution & Dispute Action Listeners
+    if (elements.btnVoiceExplainDispute) {
+        elements.btnVoiceExplainDispute.addEventListener('click', () => {
+            const disputeSpeech = state.language.startsWith('hi') ? 
+                "चिंता न करें। आपके ₹1,500 सुरक्षित हैं और NPCI ट्रांजिट में हैं। RBI के नियमों के अनुसार बैंक को 24 घंटे में पैसे वापस करने होंगे, अन्यथा ₹100 प्रतिदिन मुआवजा मिलेगा। आपकी शिकायत पर्ची तैयार कर दी गई है।" : 
+                "Do not worry. Your ₹1,500 is safe in NPCI transit. Under RBI guidelines, the bank must auto-reverse it within 24 hours, or pay ₹100 per day compensation. Your grievance ticket has been pre-filled.";
+            speakText(disputeSpeech);
+        });
+    }
+
+    if (elements.btnFileOmbudsmanTicket) {
+        elements.btnFileOmbudsmanTicket.addEventListener('click', () => {
+            showToast("Grievance lodged with RBI Ombudsman & 1930 Helpline! Ref: RBI/CMS/2026/910482", "toast-success", "📜");
+            logEvent("[DISPUTE] Official complaint dispatched to RBI Complaint Management System. Ref: RBI/CMS/2026/910482", "success");
+        });
+    }
+
     updatePageLanguage('en-IN');
 });

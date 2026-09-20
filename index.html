@@ -153,6 +153,9 @@
             <button class="channel-tab" data-channel="bankmitra">
                 <span class="icon">👨‍💼</span> <span data-i18n="nav_bankmitra">Bank Mitra Console</span>
             </button>
+            <button class="channel-tab" data-channel="dispute">
+                <span class="icon">⚖️</span> <span data-i18n="nav_dispute">Dispute & Recovery</span>
+            </button>
         </div>
     </header>
 
@@ -324,6 +327,26 @@
                     <div class="p-row">
                         <span data-i18n="label_reg_standard">Regulatory Standard:</span>
                         <strong data-i18n="val_reg_standard">RBI 2025/2026 Mandate</strong>
+                    </div>
+                </div>
+
+                <!-- Plain-Language Consequence Explainer Strip -->
+                <div class="consequence-strip">
+                    <div class="c-item">
+                        <span class="c-label" data-i18n="c_dir_label">1. Direction of Money</span>
+                        <strong class="c-val outbound" data-i18n="c_dir_val">🔴 OUTBOUND (Leaving Account)</strong>
+                    </div>
+                    <div class="c-item">
+                        <span class="c-label" data-i18n="c_recipient_label">2. Recipient</span>
+                        <strong class="c-val" id="consequence-recipient">Ramesh (Vendor)</strong>
+                    </div>
+                    <div class="c-item">
+                        <span class="c-label" data-i18n="c_amount_label">3. Deduction Amount</span>
+                        <strong class="c-val text-danger" id="consequence-amount">-₹500.00</strong>
+                    </div>
+                    <div class="c-item">
+                        <span class="c-label" data-i18n="c_balance_label">4. Resulting Balance</span>
+                        <strong class="c-val text-emerald" id="consequence-balance">₹11,950.50</strong>
                     </div>
                 </div>
 
@@ -643,6 +666,76 @@
                             <span data-i18n="aeps_tip1">✔️ Always verify Bank Mitra CSC ID badge.</span>
                             <span data-i18n="aeps_tip2">✔️ Use 2FA OTP verification for cash transactions > ₹10,000.</span>
                             <span data-i18n="aeps_tip3">✔️ Lock Aadhaar biometrics on mAadhaar app when not in use.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. DEDICATED VIEW: PROBLEM RESOLUTION & DISPUTE RECOVERY -->
+        <section id="channel-dispute" class="channel-view hidden">
+            <div class="grid-layout">
+                <!-- Left: Failed Transaction & Reversal SLA Tracker -->
+                <div class="card dispute-card">
+                    <div class="card-header">
+                        <h2><span class="icon">⚖️</span> <span data-i18n="dispute_title">Problem Resolution & Auto-Reversal Desk</span></h2>
+                        <span class="badge badge-warning" data-i18n="badge_rbi_sla">RBI T+1 SLA Active</span>
+                    </div>
+                    <p data-i18n="dispute_desc">Automated recovery layer for transactions debited from your account but uncredited at the merchant or ATM.</p>
+
+                    <!-- Active Disputed Transaction Banner -->
+                    <div class="disputed-tx-card">
+                        <div class="dtx-header">
+                            <span class="dtx-id">UTR: 429188029141</span>
+                            <span class="dtx-badge-status" data-i18n="dtx_status">Debited • In Transit</span>
+                        </div>
+                        <div class="dtx-body">
+                            <div class="dtx-amount">-₹1,500.00</div>
+                            <div class="dtx-details">
+                                <div><span data-i18n="dtx_to">To:</span> <strong>Ramesh Seeds Depot</strong></div>
+                                <div><span data-i18n="dtx_code">Failure Code:</span> <code>U30 (PSP Core Gateway Timeout)</code></div>
+                                <div><span data-i18n="dtx_time">Attempted:</span> <strong>Today, 10:14 AM</strong></div>
+                            </div>
+                        </div>
+                        <div class="dtx-timer-strip">
+                            <span class="timer-icon">⏳</span>
+                            <div class="timer-text">
+                                <strong data-i18n="dtx_auto_reversal">RBI Auto-Reversal Deadline: 23 hrs 46 mins</strong>
+                                <small data-i18n="dtx_comp_rule">RBI Mandate: ₹100/day compensation payable if delayed beyond T+1</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Voice Resolution Assistant Prompt -->
+                    <div class="dispute-actions-row">
+                        <button id="btn-voice-explain-dispute" class="btn btn-outline btn-block">
+                            <span class="icon">🔊</span> <span data-i18n="btn_voice_explain_dispute">Explain Where My Money Is (Voice Audio)</span>
+                        </button>
+                        <button id="btn-file-ombudsman-ticket" class="btn btn-emerald btn-block">
+                            <span class="icon">📝</span> <span data-i18n="btn_file_ombudsman">Auto-Draft RBI Ombudsman & 1930 Helpline Ticket</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Generated Ombudsman & Cyber Crime Complaint Slip -->
+                <div class="right-stack">
+                    <div class="card dispute-slip-card">
+                        <div class="card-header">
+                            <h2><span class="icon">📄</span> <span data-i18n="complaint_slip_title">Official Grievance Redressal Slip</span></h2>
+                            <span class="badge blue-bg" data-i18n="badge_ready_file">Ready to File</span>
+                        </div>
+
+                        <div class="slip-body" id="dispute-slip-display">
+                            <div class="slip-stamp" data-i18n="stamp_dispute">RBI CMS COMPLIANT</div>
+                            <h3 data-i18n="complaint_slip_heading">NPCI & Banking Ombudsman Complaint</h3>
+                            <hr>
+                            <div class="p-row"><span>Complainant:</span> <strong>Suresh Kumar (Kisan A/C ****4821)</strong></div>
+                            <div class="p-row"><span>Bank:</span> <strong>SBI Gramin Bank</strong></div>
+                            <div class="p-row"><span>Disputed Amount:</span> <strong>₹1,500.00</strong></div>
+                            <div class="p-row"><span>Failure Category:</span> <strong>Account Debited but Beneficiary Not Credited</strong></div>
+                            <div class="p-row"><span>NPCI UTR:</span> <strong>429188029141</strong></div>
+                            <div class="p-row"><span>Statutory Redressal:</span> <strong>Auto-Reversal under RBI Circular DPSS.CO.PD No.629/2019</strong></div>
+                            <div class="p-row"><span>Tracking Token:</span> <strong class="text-emerald">RBI/CMS/2026/910482</strong></div>
                         </div>
                     </div>
                 </div>
